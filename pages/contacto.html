@@ -325,12 +325,16 @@
 <div id="chatbot-placeholder"></div>
 
 <script>
-    // Carga el chatbot en cualquier página automáticamente
-    fetch('../chatbot.html')
-        .then(response => response.text())
+    // Usamos la barra "/" para asegurar que encuentre el archivo en la raíz
+    fetch('/chatbot.html')
+        .then(response => {
+            if (!response.ok) throw new Error("No se encontró chatbot.html");
+            return response.text();
+        })
         .then(data => {
             document.getElementById('chatbot-placeholder').innerHTML = data;
-        });
+        })
+        .catch(err => console.error("Error cargando el chat:", err));
 </script>
 <script src="../assets/js/main.js"></script>
 
