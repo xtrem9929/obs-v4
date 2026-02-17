@@ -1,36 +1,54 @@
-/* Botón estilo 'Flotante Moderno' */
+/* El contenedor padre debe ser flexible y vertical */
+#chat-messages {
+    flex: 1;
+    padding: 15px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 12px; /* Espacio real entre burbujas */
+    background-color: #fdfdfd;
+}
+
+/* Las burbujas de texto */
+.message {
+    max-width: 80%;
+    padding: 10px 14px;
+    border-radius: 15px;
+    font-size: 14px;
+    line-height: 1.4;
+    word-wrap: break-word; /* Corta palabras largas para que no se salgan */
+    position: relative;
+    display: block;
+    clear: both;
+}
+
+.bot {
+    align-self: flex-start;
+    background-color: #f0f0f0;
+    color: #333;
+    border-bottom-left-radius: 2px;
+}
+
+.user {
+    align-self: flex-end;
+    background-color: #007bff;
+    color: white;
+    border-bottom-right-radius: 2px;
+}
 #chat-widget-button {
     position: fixed; bottom: 25px; right: 25px;
-    width: 65px; height: 65px;
-    background: linear-gradient(135deg, #7a1f3d, #5c162d); /* Azul profesional */
+    width: 60px; height: 60px;
+    background-color: #e91e63; /* El color que elegiste */
     border-radius: 50%;
     display: flex; align-items: center; justify-content: center;
-    color: white; font-size: 28px; cursor: pointer;
-    box-shadow: 0 6px 16px rgba(0,0,0,0.2);
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
     z-index: 1000;
-    transition: transform 0.3s ease;
 }
 
-#chat-widget-button:hover {
-    transform: scale(1.1); /* Efecto pequeño al pasar el mouse */
+/* Controlar el tamaño del SVG dentro del botón */
+#chat-widget-button svg {
+    width: 30px;
+    height: 30px;
+    fill: white; /* Si tu SVG usa 'fill', esto lo pone blanco */
 }
-
-/* Animación de entrada para el cuadro del chat */
-#chat-container {
-    position: fixed; bottom: 100px; right: 25px;
-    width: 360px; height: 500px;
-    background: white; border-radius: 20px;
-    box-shadow: 0 12px 28px rgba(0,0,0,0.15);
-    display: flex; flex-direction: column;
-    overflow: hidden; z-index: 1000;
-    
-    /* Efecto de aparición */
-    animation: slideUp 0.4s ease-out; 
-}
-
-@keyframes slideUp {
-    from { opacity: 0; transform: translateY(30px); }
-    to { opacity: 1; transform: translateY(0); }
-}
-
-.chat-hidden { display: none !important; }

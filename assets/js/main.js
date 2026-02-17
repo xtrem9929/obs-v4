@@ -150,7 +150,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 //CHAT BOT
 
-let chatHistory = JSON.parse(localStorage.getItem('chat_history')) || [];
+let chatHistory = JSON.parse(sessionStorage.getItem('chat_history')) || [];
 
 function toggleChat() {
     const container = document.getElementById('chat-container');
@@ -158,7 +158,7 @@ function toggleChat() {
         container.classList.toggle('chat-hidden');
         // Guardamos si el chat quedó abierto o cerrado
         const isOpen = !container.classList.contains('chat-hidden');
-        localStorage.setItem('chat_is_open', isOpen);
+        sessionStorage.setItem('chat_is_open', isOpen);
     }
 }
 
@@ -191,7 +191,7 @@ async function sendMessage() {
     if (chatHistory.length > 8) chatHistory.shift();
     
     // Guardar en el navegador
-    localStorage.setItem('chat_history', JSON.stringify(chatHistory));
+    sessionStorage.setItem('chat_history', JSON.stringify(chatHistory));
 
     const botId = addMessage('...', 'bot');
 
@@ -204,7 +204,7 @@ async function sendMessage() {
         const data = await res.json();
         
         chatHistory.push({ role: "assistant", content: data.reply });
-        localStorage.setItem('chat_history', JSON.stringify(chatHistory));
+        sessionStorage.setItem('chat_history', JSON.stringify(chatHistory));
         
         typeWriter(botId, data.reply);
     } catch {
@@ -248,7 +248,7 @@ window.onload = () => {
     }
 
     // 2. Mantenerlo abierto si estaba abierto antes de cambiar de página
-    const wasOpen = localStorage.getItem('chat_is_open') === 'true';
+    const wasOpen = sessionStorage.getItem('chat_is_open') === 'true';
     if (wasOpen) {
         document.getElementById('chat-container').classList.remove('chat-hidden');
     }
