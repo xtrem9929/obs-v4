@@ -863,7 +863,7 @@
 
 <script>
     // Carga el chatbot en cualquier página automáticamente
-    fetch('/chatbot.html')
+    fetch('../chatbot.html')
         .then(response => response.text())
         .then(data => {
             document.getElementById('chatbot-placeholder').innerHTML = data;
