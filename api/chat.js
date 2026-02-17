@@ -2,11 +2,13 @@ export default async function handler(req, res) {
     if (req.method !== 'POST') return res.status(405).end();
     const { history } = req.body;
 
-    const informacionDeLaPagina = `
-        Nombre: Mant-enimiento.
-        Servicios: Arreglo de celulares, laptops y tablets. Servicios técnicos generales.
-        Ubicación: Ica, Perú.
-        Contacto: juanito@mameluco.com
+    const baseConocimiento = `
+    INSTITUCIÓN: Facultad de Obstetricia UNICA, creada el 15/01/2013 (Res. 046-R-UNICA-2013).
+    AUTORIDADES: Decana: Dra. Rosa Ruiz Reyes. Directora Escuela: Mg. Luz Gutiérrez. Investigación: Mg. Yuly Blanco. Depto Académico: Dra. Bertha Curi.
+    ACADÉMICO: 5 años (10 semestres). Nota mínima 11. Evaluación: Continua (40%), Parcial (30%), Final (30%).
+    PRÁCTICAS: Inician en V ciclo (Básica) hasta X ciclo (Internado). Sedes: Hosp. Regional Ica, Centros MINSA. Requisito 90% asistencia.
+    TESIS: Desde el 80% de créditos. Temas: Salud sexual, preeclampsia, parto.
+    CONTACTO: obstetricia@unica.edu.pe. Ubicación: Ciudad Universitaria, Ica.
     `;
 
     try {
@@ -21,22 +23,22 @@ export default async function handler(req, res) {
                 messages: [
                     { 
                         role: "system", 
-                        content: `Eres el asistente de Mant-enimiento. 
-                        REGLA DE ORO: Responde de forma EXTREMADAMENTE BREVE y DIRECTA. 
-                        Máximo 2 frases por respuesta. 
-                        Solo responde sobre: ${informacionDeLaPagina}. 
-                        Si no sabes la respuesta o es fuera de tema, di: "Solo puedo ayudarte con temas técnicos de la web."` 
+                        content: `Eres el Asistente Virtual de la Facultad de Obstetricia de la UNICA. 
+                        TU PERFIL: Profesional, directo y amable. 
+                        REGLA DE ORO: Tus respuestas deben ser CORTAS (máximo 2 líneas). 
+                        Usa esta info: ${baseConocimiento}. 
+                        Si preguntan algo fuera de tema, di: "Solo manejo información académica de la Facultad de Obstetricia".` 
                     },
                     ...history
                 ],
                 temperature: 0.1,
-                max_tokens: 100 // Limitamos la cantidad de palabras que puede generar
+                max_tokens: 120
             })
         });
 
         const data = await response.json();
         res.status(200).json({ reply: data.choices[0].message.content });
     } catch (error) {
-        res.status(500).json({ reply: "Error de servidor." });
+        res.status(500).json({ reply: "Error al conectar con la base de datos académica." });
     }
 }
