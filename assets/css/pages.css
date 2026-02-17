@@ -1,0 +1,4373 @@
+/* ============================================================
+   PAGES.CSS - REDISEÑO PROFESIONAL UNIFICADO
+   ============================================================ */
+
+/* --- ESTILO DE BLOQUES (Para todas las páginas) --- */
+.bloque-texto-imagen {
+    background-color: var(--color-fondo-claro) !important;
+    border-radius: 24px !important;
+    padding: 3rem 2rem !important;
+    margin-bottom: 3rem !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    gap: 2rem !important;
+    border: 1px solid rgba(0,0,0,0.05) !important;
+}
+
+@media (min-width: 850px) {
+    .bloque-texto-imagen {
+        flex-direction: row !important;
+        padding: 4rem !important;
+    }
+    .bloque-texto-imagen.inverso { flex-direction: row-reverse !important; }
+    .bloque-texto-imagen .texto, .bloque-texto-imagen .imagen { flex: 1 !important; }
+}
+
+/* --- CONTACTO: CARDS E ICONOS (Ajuste Definitivo) --- */
+.datos-contacto {
+    display: grid !important;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)) !important;
+    gap: 20px !important;
+    margin-bottom: 3rem !important;
+}
+
+/* Forzamos que la card sea limpia */
+.datos-contacto .bloque {
+    background: #ffffff !important;
+    border: 1px solid #eeeeee !important;
+    border-radius: 20px !important;
+    padding: 40px 20px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.05) !important;
+    position: relative !important;
+}
+
+/* REDUCCIÓN DE ICONOS: Aquí es donde los hacemos pequeños */
+.datos-contacto .bloque .icono {
+    width: 64px !important;
+    height: 64px !important;
+    background-color: var(--color-fondo-claro) !important;
+    border-radius: 50% !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    margin: 0 auto 20px auto !important;
+}
+
+.datos-contacto .bloque .icono img {
+    width: 30px !important; /* Icono pequeño y elegante */
+    height: 30px !important;
+    object-fit: contain !important;
+}
+
+/* --- FORMULARIO Y MAPA --- */
+.contacto-grid {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 2rem !important;
+}
+
+@media (min-width: 900px) {
+    .contacto-grid { flex-direction: row !important; }
+    .formulario-contacto, .ubicacion { flex: 1 !important; }
+}
+
+.ubicacion iframe {
+    border-radius: 20px !important;
+    height: 400px !important;
+}
+
+/* INDEX */
+/* --- HERO CON SILUETA EN LA ESQUINA --- */
+.hero-inicio {
+    position: relative; /* Obligatorio para que la silueta se pegue aquí */
+    min-height: 500px;
+    background: linear-gradient(90deg, rgba(0,0,0,0.5) 10%, rgba(0,0,0,0.2) 90%), 
+                url('../images/hero-obstetricia.jpg') center/cover no-repeat;
+    border-radius: 24px;
+    display: flex;
+    align-items: center;
+    padding-left: 4rem; /* Espacio para el texto a la izquierda */
+    padding-right: 0;   /* Cero espacio a la derecha para la silueta */
+    padding-bottom: 0;  /* Cero espacio abajo para que la silueta pise el borde */
+    overflow: hidden;   /* Corta cualquier parte de la silueta que se salga */
+}
+
+
+/* CONTENEDOR DE LA SILUETA */
+.hero-imagen {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    /* Controlamos que no ocupe más del 80% del alto del hero para que no se vea gigante */
+    height: 85%; 
+    width: auto;
+    display: flex;
+    align-items: flex-end;
+    pointer-events: none; /* Para que no interfiera si alguien intenta hacer clic en el texto de abajo */
+}
+
+.hero-imagen img {
+    height: 100%;
+    width: auto;
+    object-fit: contain;
+    /* EVITA QUE SE VEA BORROSA AL AGRANDAR */
+    image-rendering: -webkit-optimize-contrast; 
+    image-rendering: crisp-edges;
+    
+    /* Si se sigue viendo muy grande, baja este valor de opacidad para que sea más sutil */
+    opacity: 1; 
+    
+    /* Alineación exacta a la esquina inferior derecha */
+    display: block;
+    margin-bottom: -5px; /* Pequeño ajuste para asegurar que toque el borde */
+}
+
+/* SI LA IMAGEN SE ROMPE PORQUE ES MALA CALIDAD, PONEMOS UN TOPE EN PÍXELES */
+@media (min-width: 1200px) {
+    .hero-imagen img {
+        max-height: 450px; /* Ajusta este número hasta que dejes de verla pixelada */
+    }
+}
+.hero-texto h1, p{
+    color: white;
+}
+
+/* BOTÓN GUINDA (Usando tu variable) */
+.boton-hero {
+    display: inline-block;
+    background-color: var(--color-principal) !important;
+    color: white !important;
+    padding: 12px 30px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: bold;
+    margin-top: 1rem;
+}
+.hero-texto {
+    max-width: 70%;     /* Evita que el texto pase de la mitad y tape la silueta */
+    z-index: 10;        /* Asegura que el texto esté por encima de cualquier sombra */
+}
+/* Ajuste para que no se rompa en móvil */
+@media (max-width: 992px) {
+    .hero-inicio { padding: 2rem; text-align: center; }
+    .hero-contenido { flex-direction: column; }
+    .hero-imagen { display: none; } /* Ocultamos silueta en cel si estorba */
+}
+/* --- AJUSTES RESPONSIVE PARA EL HERO --- */
+@media (max-width: 768px) {
+    .hero-inicio {
+        min-height: 450px;       /* Reducimos un poco la altura en móvil */
+        padding: 2rem !important; /* Centramos el espacio */
+        justify-content: center;
+        text-align: center;
+        background: linear-gradient(0deg, rgba(0,0,0,0.8) 50%, rgba(0,0,0,0.4) 100%), 
+                    url('../images/hero-obstetricia.jpg') center/cover no-repeat;
+    }
+
+    .hero-texto {
+        padding-left: 0 !important; /* Quitamos el margen izquierdo en móvil */
+        max-width: 100% !important;  /* Que use todo el ancho disponible */
+        display: flex;
+        flex-direction: column;
+        align-items: center;        /* Centra el botón y el texto */
+    }
+
+    .hero-texto h1 {
+        font-size: 2.2rem !important; /* Letra más pequeña para que no desborde */
+        margin-bottom: 1rem !important;
+    }
+
+    .hero-texto .subtitulo {
+        font-size: 1.1rem !important;
+        border-left: none;           /* Quitamos la línea lateral en móvil */
+        padding-left: 0;
+        margin-bottom: 1.5rem !important;
+    }
+
+    /* Manejo de la silueta en celular */
+    .hero-imagen {
+        opacity: 0.4;                /* La hacemos más transparente para que no tape el texto */
+        height: 60% !important;      /* Más pequeña */
+        z-index: 1;                  /* Pasa al fondo */
+    }
+    
+    .boton-hero {
+        width: 100%;                 /* Botón a todo lo ancho para que sea fácil de tocar */
+        max-width: 300px;
+    }
+}
+
+/* Ajuste para celulares muy pequeños (iPhone SE, etc) */
+@media (max-width: 480px) {
+    .hero-texto h1 {
+        font-size: 1.8rem !important;
+    }
+}
+
+/* --- DOMANDO LOS ICONOS DEL INDEX --- */
+
+/* 1. Aseguramos que el contenedor de la card permita alineación lateral */
+.pagina-inicio .bloque-preguntas .bloque {
+    display: flex !important;
+    flex-direction: row !important; 
+    align-items: center !important;
+    gap: 15px !important;
+    text-align: left !important;
+    padding: 1.5rem !important;
+}
+
+/* 2. EL CAMBIO CLAVE: Selector combinado (etiqueta + clase) */
+.pagina-inicio .bloque-preguntas .bloque img.icono {
+    width: 32px !important;   /* Tamaño pequeño */
+    height: 32px !important;  /* Tamaño pequeño */
+    min-width: 32px !important; 
+    max-width: 32px !important;
+    display: inline-block !important;
+    object-fit: contain !important;
+    margin: 0 !important;     /* Quitamos márgenes que puedan heredar */
+}
+
+/* 3. Ajuste del texto para que no se pegue */
+.pagina-inicio .bloque-preguntas .bloque h3 {
+    margin: 0 !important;
+    flex: 1;
+    font-size: 1.1rem !important;
+}
+.pagina-inicio .texto-preguntas {
+    display: grid !important;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)) !important;
+    gap: 20px !important;
+    margin-top: 2rem !important;
+}
+/* ============================================================
+   SECCIÓN VOCACIÓN (INDEX) - CLASES REALES
+   ============================================================ */
+
+.bloque-vocacion {
+    padding: 4rem 1rem;
+    text-align: center;
+}
+
+.bloque-vocacion h2 {
+    margin-bottom: 3rem;
+    font-size: 2.2rem;
+}
+
+/* CONTENEDOR DE GRIDS */
+.contenedor-tarjetas {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 25px;
+    max-width: 1100px;
+    margin: 0 auto 3rem;
+}
+
+/* LA TARJETA (CARD) */
+.tarjeta-vocacion {
+    background: var(--blanco);
+    border: 1px solid #eee;
+    border-radius: 20px;
+    padding: 1.5rem;
+    display: flex !important;
+    flex-direction: row !important; /* ICONO AL LADO DEL TEXTO */
+    align-items: center !important;
+    gap: 20px;
+    text-align: left;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+    transition: transform 0.3s ease;
+}
+
+.tarjeta-vocacion:hover {
+    transform: translateY(-5px);
+    border-color: var(--color-principal);
+}
+
+/* EL CONTENEDOR CIRCULAR DEL ICONO */
+.caja-icono {
+    width: 60px !important;
+    height: 60px !important;
+    min-width: 60px !important;
+    background-color: var(--color-fondo-claro);
+    border-radius: 50%;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    flex-shrink: 0;
+}
+
+/* EL ICONO SVG (Control total de tamaño) */
+.caja-icono img.icono {
+    width: 28px !important;
+    height: 28px !important;
+    object-fit: contain !important;
+    margin: 0 !important;
+    /* Color guinda para el SVG */
+    filter: brightness(0) saturate(100%) invert(18%) sepia(34%) saturate(2335%) hue-rotate(316deg) brightness(91%) contrast(92%);
+}
+
+/* AJUSTE DE TEXTO DENTRO DE LA TARJETA */
+.tarjeta-vocacion h3 {
+    margin: 0 0 5px 0 !important;
+    
+}
+
+/* --- SECCIÓN VOCACIÓN --- */
+.bloque-vocacion {
+    padding: 60px 5%;
+    background-color: #f9f9f9; /* Fondo gris muy tenue para que las cards blancas resalten */
+    text-align: center;
+}
+
+/* --- TARJETA VOCACIÓN (ORDENADA) --- */
+.tarjeta-vocacion {
+    background: white;
+    padding: 40px 30px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centra todo el contenido */
+    transition: transform 0.3s ease;
+}
+
+/* 1. EL ICONO (ARRIBA) */
+.caja-icono {
+    margin-bottom: 20px; /* Espacio antes del título */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* 2. EL TÍTULO (EN MEDIO) */
+.tarjeta-vocacion h3 {
+    color: #2c2c2c;
+    font-size: 1.6rem;
+    font-weight: 800;
+    margin: 0 0 15px 0; /* Espacio solo abajo, hacia la pregunta */
+    line-height: 1.2;
+    text-align: center;
+    /* Un pequeño detalle: que el título sea un poco más oscuro que la pregunta */
+}
+
+/* 3. LA PREGUNTA (DEBAJO) */
+.tarjeta-vocacion p {
+    color: #555;
+    font-size: 1.1rem;
+    line-height: 1.6;
+
+    text-align: center;
+    font-style: italic; /* Para que la pregunta se sienta diferente al texto normal */
+}
+
+/* EFECTO HOVER */
+.tarjeta-vocacion:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 40px rgba(122, 31, 61, 0.12);
+}
+.mensaje-vocacional {
+    margin-top: 60px;
+    padding: 30px;
+    background: #fff;
+    border-radius: 12px;
+    border-left: 5px solid var(--color-principal);
+    max-width: 850px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* --- RESPONSIVE --- */
+@media (max-width: 768px) {
+    .bloque-vocacion h2 {
+        font-size: 2rem;
+    }
+    
+    .contenedor-tarjetas {
+        grid-template-columns: 1fr; /* Una tarjeta sobre otra en móvil */
+    }
+}
+/* --- SECCIÓN VOCACIÓN (REDiseño TOTAL) --- */
+.bloque-vocacion {
+    padding: 80px 10%;
+    background-color: #ffffff; /* Fondo limpio */
+    text-align: center;
+}
+
+.bloque-vocacion h2 {
+    color: #1a1a1a;
+    font-size: 2.8rem;
+    font-weight: 800;
+    margin-bottom: 50px;
+    position: relative;
+    display: inline-block;
+}
+
+/* Línea decorativa bajo el título principal */
+.bloque-vocacion h2::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 4px;
+    background: var(--color-principal);
+    margin: 15px auto 0;
+    border-radius: 10px;
+}
+
+/* CONTENEDOR */
+.contenedor-tarjetas {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 40px;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+/* TARJETAS ESTÉTICAS */
+.tarjeta-vocacion {
+    background: #ffffff;
+    padding: 50px 35px;
+    border-radius: 24px;
+    /* Sombra muy suave y profesional */
+    box-shadow: 0 10px 40px rgba(0,0,0,0.05);
+    border: 1px solid #f0f0f0; 
+    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.tarjeta-vocacion:hover {
+    transform: translateY(-12px);
+    box-shadow: 0 20px 50px rgba(122, 31, 61, 0.12);
+    border-color: var(--color-principal);
+}
+
+/* TÍTULO DE LA CARD (Lo que se veía raro) */
+.tarjeta-vocacion h3 {
+     /* Usamos el guinda para el título de la card */
+    font-size: 1.6rem;
+    font-weight: 700;
+    margin: 25px 0 15px 0;
+    letter-spacing: -0.5px;
+}
+
+/* LA PREGUNTA (Cuerpo de la card) */
+.tarjeta-vocacion p {
+    color: #555;
+    font-size: 1.15rem;
+    line-height: 1.6;
+
+    font-weight: 400;
+}
+
+/* MENSAJE VOCACIONAL (El bloque de abajo) */
+.mensaje-vocacional {
+    margin-top: 80px;
+    padding: 40px;
+    background: linear-gradient(135deg, #fdfdfd 0%, #f7f7f7 100%);
+    border-radius: 20px;
+    border-top: 4px solid var(--color-principal);
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.02);
+}
+
+.mensaje-vocacional p {
+    font-size: 1.3rem;
+    color: #333;
+    line-height: 1.8;
+    font-style: italic;
+    font-weight: 500;
+}
+
+/* RESPONSIVE RÁPIDO */
+@media (max-width: 768px) {
+    .bloque-vocacion h2 { font-size: 2.2rem; }
+    .tarjeta-vocacion { padding: 35px 25px; }
+}
+/* --- SECCIÓN VOCACIÓN: ESTILO COMPACTO --- */
+.bloque-vocacion {
+    padding: 50px 5%;
+    background-color: #ffffff;
+    text-align: center;
+}
+
+/* TÍTULO PRINCIPAL (Ahora más sutil y en Guinda) */
+.bloque-vocacion h2 {
+    color: var(--color-principal); /* Cambiado a guinda para que no sea ese negro invasivo */
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 40px;
+}
+
+.contenedor-tarjetas {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 25px;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+/* LA CARD */
+.tarjeta-vocacion {
+    background: #fcfcfc;
+    padding: 25px;
+    border-radius: 12px;
+    border: 1px solid #eee;
+    text-align: left; /* Alineado a la izquierda para el formato horizontal */
+    transition: 0.3s;
+}
+
+/* FILA SUPERIOR: ICONO + TITULO */
+.caja-icono {
+    display: flex;
+    align-items: center; /* Alinea icono y texto al centro verticalmente */
+    gap: 15px;           /* Espacio entre icono y título */
+    margin-bottom: 15px;
+}
+
+.caja-icono img {
+    width: 35px;        /* Tamaño reducido para que no invada */
+    height: 35px;
+}
+
+.tarjeta-vocacion h3 {
+    margin: 0;          /* Quitamos márgenes para que cuadre con el icono */
+    font-size: 1.3rem;
+    color: #333;
+    font-weight: 700;
+}
+
+/* TEXTO DEBAJO */
+.tarjeta-vocacion p {
+    color: #666;
+    padding-left: 50px; /* Alinea el texto justo donde empieza el título (35px icono + 15px gap) */
+}
+
+/* MENSAJE VOCACIONAL (Más pequeño) */
+.mensaje-vocacional {
+    margin-top: 40px;
+    padding: 20px;
+    border-top: 1px solid #eee;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.mensaje-vocacional p {
+    font-size: 1.1rem;
+    color: #777;
+    font-style: italic;
+}
+/* --- SECCIÓN VOCACIÓN: VERTICAL Y COMPACTO --- */
+.bloque-vocacion {
+    padding: 60px 5%;
+    background-color: #ffffff;
+    text-align: center;
+}
+
+/* TÍTULO PRINCIPAL: Guinda y tamaño moderado */
+.bloque-vocacion h2 {
+    color: var(--color-principal);
+    font-size: 2.2rem;
+    font-weight: 700;
+    margin-bottom: 45px;
+}
+
+
+
+
+
+/* ==============================
+   CARDS DE PREGUNTAS – VOCACIÓN
+   ============================== */
+
+.bloque-vocacion {
+  padding: 60px 5%;
+  text-align: center;
+  background-color: #ffffff;
+}
+
+.bloque-vocacion h2 {
+  color: var(--color-principal);
+  font-size: 2.2rem;
+  margin-bottom: 3rem;
+}
+
+/* GRID */
+.bloque-vocacion .contenedor-tarjetas {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 30px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+/* CARD */
+.tarjeta-vocacion {
+  background-color: #ffffff;
+  border-radius: 16px;
+  padding: 35px 25px;
+  border: 1px solid #eee;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.05);
+
+  /* 🔑 CLAVE */
+  display: flex;
+  flex-direction: column;   /* TODO EN VERTICAL */
+  align-items: center;
+  text-align: center;
+
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.tarjeta-vocacion:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 18px 40px rgba(122, 31, 61, 0.15);
+}
+
+/* ICONO */
+.tarjeta-vocacion .caja-icono {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background-color: var(--color-fondo-claro);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 18px;
+}
+
+.tarjeta-vocacion .icono {
+  width: 28px;
+  height: 28px;
+}
+
+/* TÍTULO */
+.tarjeta-vocacion h3 {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--color-principal);
+  margin-bottom: 10px; /* separa del párrafo */
+}
+
+/* PREGUNTA */
+.tarjeta-vocacion p {
+  font-size: 1rem;
+  color: var(--texto-secundario);
+  line-height: 1.5;
+  margin: 0;
+}
+/* =========================================
+   AJUSTE FINAL – CARDS VOCACIÓN (COMPACTAS)
+   ========================================= */
+
+/* CARD */
+.tarjeta.tarjeta-vocacion {
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 24px 26px;              /* 🔽 más pequeña */
+  border: 1px solid #eee;
+  box-shadow: 0 8px 22px rgba(0,0,0,0.05);
+
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  text-align: center !important;
+}
+
+/* FILA SUPERIOR: ICONO + TÍTULO */
+.tarjeta-vocacion .caja-icono {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background-color: #f6eef1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* CONTENEDOR VISUAL ICONO + TITULO */
+.tarjeta-vocacion h3 {
+  display: inline-flex;
+  align-items: center;             /* 🔑 centra con icono */
+  gap: 12px;
+  margin: 0 0 10px 0;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--color-principal);
+}
+
+/* ICONO DENTRO DEL TÍTULO */
+.tarjeta-vocacion h3::before {
+  content: "";
+}
+
+/* ICONO */
+.tarjeta-vocacion .icono {
+  width: 22px;
+  height: 22px;
+}
+
+/* TEXTO */
+.tarjeta-vocacion p {
+  font-size: 0.95rem;              /* 🔽 texto más compacto */
+  color: #666;
+  line-height: 1.5;
+  margin: 0;
+  max-width: 95%;
+}
+
+/* ESPACIADO GENERAL */
+.tarjeta-vocacion > *:not(:last-child) {
+  margin-bottom: 8px;
+}
+/* =========================================
+   SECCIÓN VOCACIÓN – VERSIÓN LIMPIA FINAL
+   ========================================= */
+
+.bloque-vocacion {
+  padding: 60px 5%;
+  text-align: center;
+  background-color: #ffffff;
+}
+
+.bloque-vocacion h2 {
+  font-size: 2.2rem;
+  color: var(--color-principal);
+  margin-bottom: 3rem;
+}
+
+/* GRID */
+.bloque-vocacion .contenedor-tarjetas {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 32px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+/* CARD */
+.tarjeta-vocacion {
+  background-color: #ffffff;
+  border-radius: 18px;
+  padding: 28px 24px;        /* card más compacta */
+  border: 1px solid #eee;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.05);
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+/* ICONO CIRCULAR */
+.tarjeta-vocacion .caja-icono {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background-color: #f6eef1;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  margin-bottom: 16px;
+}
+
+.tarjeta-vocacion .icono {
+  width: 24px;
+  height: 24px;
+}
+
+/* TÍTULO */
+.tarjeta-vocacion h3 {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--color-principal);
+  margin-bottom: 8px;
+}
+
+/* TEXTO */
+.tarjeta-vocacion p {
+  font-size: 0.95rem;
+  color: #666;
+  line-height: 1.5;
+  max-width: 260px;   /* 🔑 evita empujes visuales */
+  margin: 0 auto;
+}
+/* =========================================
+   FIX EMPUJE LATERAL – VOCACIÓN
+   ========================================= */
+
+.tarjeta-vocacion {
+  box-sizing: border-box;
+}
+
+/* Aseguramos centrado real del contenido */
+.tarjeta-vocacion > * {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Texto sin empujes */
+.tarjeta-vocacion p {
+  max-width: 240px;     /* un poco más compacto */
+  padding: 0;
+  margin: 0 auto;
+  text-align: center;
+}
+
+/* =========================================
+   FIX FINAL – ICONO + TÍTULO CENTRADOS
+   ========================================= */
+
+/* Forzamos centrado real del contenido */
+.tarjeta-vocacion {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* ICONO */
+.tarjeta-vocacion .caja-icono {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+
+/* TEXTO */
+.tarjeta-vocacion p {
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+
+/* =========================================
+   SOLUCIÓN REAL – CENTRADO VISUAL TOTAL
+   ========================================= */
+
+/* Centramos el CONTENIDO como bloque */
+.tarjeta-vocacion {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Todos los hijos alineados desde el centro */
+.tarjeta-vocacion > * {
+  align-self: center;
+}
+
+
+/* Texto */
+.tarjeta-vocacion p {
+  text-align: center;
+  margin: 0 auto;
+  max-width: 260px;
+}
+/* =========================================
+   FIX FINAL DEFINITIVO – CENTRADO REAL
+   ========================================= */
+
+.tarjeta-vocacion {
+  display: grid;
+  place-items: center;   /* 🔑 centra TODO horizontal y vertical */
+  text-align: center;
+}
+
+/* TEXTO */
+.tarjeta-vocacion p {
+  margin: 0;
+  max-width: 260px;
+  text-align: center;
+}
+/* =========================================
+   MEJORA ESTÉTICA – SECCIONES DESTACADAS
+   ========================================= */
+
+.secciones-destacadas {
+  margin-top: 2.5rem;
+  border-radius: 35px;
+  
+}
+
+/* Grid más balanceado */
+.secciones-destacadas .contenedor-tarjetas {
+  align-items: stretch; /* todas del mismo alto */
+}
+
+/* Card */
+.tarjeta-destacada {
+  background-color: #faf7f8;
+  border-radius: 18px;
+  padding: 36px 28px;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  height: 100%;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.04);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Hover más elegante */
+.tarjeta-destacada:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 18px 45px rgba(122,31,61,0.12);
+}
+
+/* Icono */
+.tarjeta-destacada .icono {
+  width: 34px;
+  height: 34px;
+  margin: 0 auto 18px;
+}
+
+/* Título */
+.tarjeta-destacada h3 {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--color-principal);
+  margin-bottom: 12px;
+}
+
+/* Texto descriptivo (MEJORA CLAVE) */
+.tarjeta-destacada p {
+  font-size: 0.95rem;
+  color: #555;              /* más contraste */
+  line-height: 1.6;
+  margin-bottom: auto;      /* empuja el botón abajo */
+}
+
+/* Botón anclado */
+.tarjeta-destacada .boton-enlace {
+  margin-top: 22px;
+  align-self: center;
+}
+@media (min-width: 1100px) {
+  .secciones-destacadas .contenedor-tarjetas {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+/* Centrar visualmente el título de la sección */
+.secciones-destacadas > h2 {
+  max-width: 1200px;
+  margin: 0 auto 3rem auto;
+  padding: 0 1rem;
+}
+/* Más aire entre cards */
+.secciones-destacadas .contenedor-tarjetas {
+  gap: 40px;
+}
+/* Contenedor icono + título */
+.tarjeta-destacada h3 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+
+/* Icono al lado del título */
+.tarjeta-destacada .icono {
+  width: 26px;
+  height: 26px;
+  margin: 0;
+}
+/* Fondo suave para destacar cards */
+.secciones-destacadas {
+  padding: 2rem 1rem;
+  background-color: #fcfafb;
+}
+
+/* Cards con más presencia */
+.tarjeta-destacada {
+  background-color: #ffffff;
+  border: 1px solid #eee;
+}
+.tarjeta-destacada {
+  display: flex;
+  flex-direction: column;
+}
+
+.tarjeta-destacada p {
+  margin-bottom: auto;
+}
+/* 2 columnas en desktop para cards más anchas */
+@media (min-width: 900px) {
+  .secciones-destacadas .contenedor-tarjetas {
+    grid-template-columns: repeat(2, 1fr);
+    max-width: 900px; /* controla el ancho total */
+    margin: 0 auto;
+  }
+}
+/* Icono más suave y orgánico */
+.tarjeta-destacada .caja-icono {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background-color: rgba(122, 31, 61, 0.08); /* guinda MUY suave */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 18px;
+}
+.tarjeta-destacada {
+  padding: 44px 36px;
+}
+.tarjeta-destacada {
+  background: linear-gradient(
+    180deg,
+    #ffffff 0%,
+    #faf7f8 100%
+  );
+}
+
+/* =========================================
+   CTA – ¿DESEAS MÁS INFORMACIÓN?
+   ========================================= */
+
+.cta-contacto {
+  background: linear-gradient(
+    135deg,
+    rgba(122, 31, 61, 0.08),
+    rgba(122, 31, 61, 0.03)
+  );
+  padding: 40px 10px;
+  text-align: center;
+  border-radius: 24px;
+  max-width: 900px;
+  margin: 80px auto 0 auto;
+}
+
+/* TÍTULO */
+.cta-contacto h2 {
+  font-size: 2.2rem;
+  color: var(--color-principal);
+  margin-bottom: 20px;
+}
+
+/* TEXTO */
+.cta-contacto p {
+  font-size: 1.1rem;
+  color: #444;
+  max-width: 700px;
+  margin: 0 auto 35px auto;
+  line-height: 1.6;
+}
+
+/* BOTÓN */
+.cta-contacto .boton-principal {
+  padding: 14px 36px;
+  font-size: 1rem;
+  border-radius: 999px;
+}
+
+/* =========================================
+   PÁGINA LA CARRERA – ENCABEZADO
+   ========================================= */
+
+.pagina-carrera {
+  background-color: #ffffff;
+}
+
+/* Contenedor del encabezado */
+.encabezado-pagina {
+  padding: 60px 20px 55px; /* menos alto */
+  background: linear-gradient(
+    180deg,
+    rgba(122, 31, 61, 0.08) 0%,
+    rgba(122, 31, 61, 0.03) 100%
+  );
+  text-align: center;
+  border-radius: 28px;
+  margin: 40px auto 60px;
+  max-width: 1200px;
+}
+/* Rayita decorativa debajo del encabezado */
+.encabezado-pagina::after {
+  content: "";
+  display: block;
+  width: 80px;
+  height: 4px;
+  background-color: var(--color-principal);
+  margin: 24px auto 0;
+  border-radius: 999px;
+}
+.encabezado-pagina::after {
+  opacity: 0.8;
+}
+
+
+
+/* Ancho controlado (como en el Home) */
+.encabezado-pagina .contenido-encabezado {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+/* TÍTULO */
+.encabezado-pagina h1 {
+  font-size: 2.6rem;
+  color: var(--color-principal);
+  margin-bottom: 16px;
+  line-height: 1.2;
+}
+
+/* TEXTO INTRO */
+.encabezado-pagina p {
+  font-size: 1.1rem;
+  color: #555;
+  line-height: 1.7;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+/* =========================================
+   RESPONSIVE
+   ========================================= */
+
+@media (max-width: 768px) {
+  .encabezado-pagina {
+    padding: 60px 16px 55px;
+  }
+
+  .encabezado-pagina h1 {
+    font-size: 2.1rem;
+  }
+
+  .encabezado-pagina p {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .encabezado-pagina h1 {
+    font-size: 1.9rem;
+  }
+}
+
+/* =========================================
+   BLOQUES DE CONTENIDO – LA CARRERA
+   ========================================= */
+
+.bloque-destacado {
+  background-color: #fcfafb;
+  padding: 80px 30px;
+  border-radius: 32px;
+  margin: 60px auto;
+  max-width: 1200px;
+}
+
+/* Títulos de sección */
+.bloque-destacado h2 {
+  font-size: 2rem;
+  color: var(--color-principal);
+  margin-bottom: 40px;
+  text-align: center;
+  position: relative;
+}
+
+/* Rayita decorativa */
+.bloque-destacado h2::after {
+  content: "";
+  width: 60px;
+  height: 4px;
+  background-color: var(--color-principal);
+  display: block;
+  margin: 16px auto 0;
+  border-radius: 999px;
+  opacity: 0.8;
+}
+/* =========================================
+   FIX REAL – TEXTO + IMAGEN LA CARRERA
+   ========================================= */
+
+.bloque-destacado {
+  background-color: #fcfafb;
+  padding: 10px 55px;
+  border-radius: 32px;
+  margin: 60px auto;
+  max-width: 1200px;
+  padding-top: 30px;
+}
+
+
+/* TÍTULO DE BLOQUE */
+.bloque-destacado h2 {
+  font-size: 2rem;
+  color: var(--color-principal);
+  margin-bottom: 40px;
+  text-align: center;
+}
+
+/* CONTENEDOR TEXTO + IMAGEN */
+.bloque-texto-imagen {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  align-items: center;
+}
+
+/* TEXTO */
+.bloque-texto-imagen .texto {
+  font-size: 1rem;
+  color: #222;              /* 🔑 ahora sí se ve */
+  line-height: 1.8;
+}
+
+/* IMAGEN CONTENEDOR */
+.bloque-texto-imagen .imagen {
+  display: flex;
+  justify-content: center;
+}
+
+/* IMAGEN CONTROLADA */
+.bloque-texto-imagen .imagen img {
+  width: 100%;
+  max-width: 420px;         /* 🔑 NO más gigante */
+  height: auto;
+  border-radius: 24px;
+  box-shadow: 0 14px 35px rgba(0,0,0,0.15);
+  object-fit: cover;
+}
+
+/* =========================================
+   RESPONSIVE
+   ========================================= */
+
+@media (max-width: 900px) {
+  .bloque-texto-imagen {
+    grid-template-columns: 1fr;
+  }
+
+  .bloque-texto-imagen .imagen {
+    order: -1;
+  }
+
+  .bloque-destacado {
+    padding: 50px 20px;
+  }
+}
+/* =========================================
+   FIX DE EMERGENCIA – TEXTO + IMAGEN (SIN DEPENDER DE CLASES)
+   ========================================= */
+
+/* Contenedor principal */
+.bloque-destacado .bloque-texto-imagen {
+  display: grid !important;
+  grid-template-columns: 1fr 1fr !important;
+  gap: 40px !important;
+  align-items: center !important;
+}
+
+/* PRIMER HIJO = TEXTO (sea como se llame) */
+.bloque-destacado .bloque-texto-imagen > div:first-child {
+  font-size: 1rem !important;
+  color: #222 !important;
+  line-height: 1.8 !important;
+}
+
+/* SEGUNDO HIJO = IMAGEN */
+.bloque-destacado .bloque-texto-imagen > div:last-child {
+  display: flex !important;
+  justify-content: center !important;
+}
+
+/* IMAGEN DIRECTA */
+.bloque-destacado .bloque-texto-imagen img {
+  width: 100% !important;
+  max-width: 420px !important;
+  height: auto !important;
+  border-radius: 28px !important;
+  box-shadow: 0 14px 35px rgba(0,0,0,0.15) !important;
+  object-fit: cover !important;
+}
+/* =========================================
+   COLOR DE TEXTO – BLOQUES TEXTO + IMAGEN
+   ========================================= */
+
+/* Texto principal de los bloques */
+.bloque-destacado .bloque-texto-imagen,
+.bloque-destacado .bloque-texto-imagen p {
+  color: #2a2a2a;   /* ← aquí cambias el color */
+}
+
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+  .bloque-destacado .bloque-texto-imagen {
+    grid-template-columns: 1fr !important;
+  }
+
+  .bloque-destacado .bloque-texto-imagen > div:last-child {
+    order: -1 !important;
+  }
+}
+
+/* =========================================
+   BLOQUE DURACIÓN, GRADO Y TÍTULO
+   ========================================= */
+
+.bloque-duracion {
+  background: #fcfafb;
+  padding: 70px 60px;
+  border-radius: 32px;
+  max-width: 1200px;
+  margin: 80px auto;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.04);
+}
+
+/* Título */
+.bloque-duracion h2 {
+  font-size: 2.1rem;
+  color: var(--color-principal);
+  text-align: center;
+  margin-bottom: 50px;
+  position: relative;
+}
+
+.bloque-duracion h2::after {
+  content: "";
+  width: 70px;
+  height: 4px;
+  background-color: var(--color-principal);
+  display: block;
+  margin: 16px auto 0;
+  border-radius: 999px;
+}
+
+/* Contenedor de tarjetas */
+.bloque-duracion .datos {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 26px;
+}
+
+/* Cada tarjeta */
+.bloque-duracion .dato {
+  background: #ffffff;
+  padding: 26px 28px;
+  border-radius: 20px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.06);
+  transition: all 0.25s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Detalle decorativo lateral */
+.bloque-duracion .dato::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 5px;
+  height: 100%;
+  background: var(--color-principal);
+  border-radius: 0 6px 6px 0;
+  opacity: 0.8;
+}
+
+/* Hover */
+.bloque-duracion .dato:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.12);
+}
+
+/* Etiqueta (Duración, Modalidad...) */
+.bloque-duracion .dato strong {
+  display: block;
+  font-size: 0.95rem;
+  color: var(--color-principal);
+  margin-bottom: 6px;
+  font-weight: 600;
+  letter-spacing: 0.2px;
+}
+
+/* Valor */
+.bloque-duracion .dato span {
+  font-size: 1.05rem;
+  color: #333;
+  line-height: 1.5;
+}
+
+/* =========================================
+   RESPONSIVE
+   ========================================= */
+
+@media (max-width: 768px) {
+  .bloque-duracion {
+    padding: 50px 20px;
+  }
+
+  .bloque-duracion h2 {
+    font-size: 1.8rem;
+    margin-bottom: 40px;
+  }
+
+  .bloque-duracion .dato {
+    padding: 22px 22px;
+  }
+}
+/* =========================================
+   FIX VISUAL – DURACIÓN, GRADO Y TÍTULO
+   ========================================= */
+
+.bloque-duracion {
+  background: #fcfafb;
+  padding: 70px 60px;
+  border-radius: 32px;
+  max-width: 1200px;
+  margin: 80px auto;
+}
+
+/* Título */
+.bloque-duracion h2 {
+  font-size: 2.1rem;
+  color: var(--color-principal);
+  text-align: center;
+  margin-bottom: 50px;
+  position: relative;
+}
+
+.bloque-duracion h2::after {
+  content: "";
+  width: 70px;
+  height: 4px;
+  background-color: var(--color-principal);
+  display: block;
+  margin: 16px auto 0;
+  border-radius: 999px;
+}
+
+/* CONTENEDOR DE TARJETAS – AQUÍ ESTABA EL PROBLEMA */
+.bloque-duracion .datos {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);   /* 🔑 2 columnas fijas */
+  gap: 30px 40px;
+  justify-content: center;
+  max-width: 900px;                        /* 🔑 evita que se estire raro */
+  margin: 0 auto;
+}
+
+/* TARJETA */
+.bloque-duracion .dato {
+  background: #ffffff;
+  padding: 28px 30px;
+  border-radius: 22px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.06);
+  position: relative;
+  overflow: hidden;
+  transition: all 0.25s ease;
+}
+
+/* Detalle lateral */
+.bloque-duracion .dato::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 6px;
+  height: 100%;
+  background: var(--color-principal);
+  border-radius: 0 8px 8px 0;
+}
+
+/* Hover */
+.bloque-duracion .dato:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.12);
+}
+
+/* Título del dato */
+.bloque-duracion .dato strong {
+  display: block;
+  font-size: 1rem;
+  color: var(--color-principal);
+  margin-bottom: 6px;
+  font-weight: 600;
+}
+
+/* Valor */
+.bloque-duracion .dato span {
+  font-size: 1.05rem;
+  color: #333;
+  line-height: 1.5;
+}
+
+/* =========================================
+   RESPONSIVE
+   ========================================= */
+
+@media (max-width: 768px) {
+  .bloque-duracion {
+    padding: 50px 20px;
+  }
+
+  .bloque-duracion .datos {
+    grid-template-columns: 1fr;   /* 1 columna en móvil */
+  }
+}
+/* =========================================
+   SOLO PÁGINA LA CARRERA – PERFILES
+   ========================================= */
+
+.pagina-carrera .contenedor-tarjetas {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 32px;
+  max-width: 1000px;
+  margin: 0 auto 60px;
+  padding: 0 20px;
+}
+
+.pagina-carrera .tarjeta {
+  display: flex;
+  align-items: flex-start;
+  gap: 18px;
+  padding: 22px 24px;
+  border-radius: 20px;
+  background: #ffffff;
+  box-shadow: 0 10px 24px rgba(0,0,0,0.08);
+  transition: all 0.3s ease;
+}
+
+.pagina-carrera .tarjeta:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 36px rgba(0,0,0,0.12);
+}
+
+/* Icono integrado */
+.pagina-carrera .caja-icono {
+  flex-shrink: 0;
+  width: 48px;
+  height: 48px;
+  background: rgba(122, 31, 61, 0.12);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 2px;
+}
+
+.pagina-carrera .caja-icono .icono {
+  width: 24px;
+  height: 24px;
+}
+
+/* Contenido */
+.pagina-carrera .tarjeta h3 {
+  margin: 0 0 6px;
+  font-size: 1.15rem;
+  color: var(--color-principal);
+}
+
+.pagina-carrera .tarjeta ul {
+  padding-left: 16px;
+  margin: 0;
+}
+
+.pagina-carrera .tarjeta li {
+  margin-bottom: 5px;
+  font-size: 0.93rem;
+  color: #444;
+  line-height: 1.4;
+}
+.pagina-carrera .perfil-profesional {
+  background: #fcfafb;
+  border-radius: 22px;
+  padding: 32px 36px;
+  max-width: 900px;
+  margin: 0 auto 80px;
+  box-shadow: 0 10px 24px rgba(0,0,0,0.05);
+}
+
+.pagina-carrera .perfil-profesional h3 {
+  color: var(--color-principal);
+  font-size: 1.25rem;
+  margin-bottom: 10px;
+}
+
+.pagina-carrera .perfil-profesional p {
+  color: #333;
+  line-height: 1.6;
+  font-size: 0.95rem;
+}
+.pagina-carrera section > h2 {
+  max-width: 1000px;
+  margin: 0 auto 40px;
+  padding: 0 20px;
+}
+/* ================================
+   PERFILES – ARREGLO DEFINITIVO
+   SOLO PÁGINA CARRERA
+   ================================ */
+
+.pagina-carrera .contenedor-tarjetas {
+  max-width: 1000px;
+  margin: 0 auto 60px;
+  padding: 0 20px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 32px;
+}
+
+/* Card */
+.pagina-carrera .tarjeta {
+  display: flex;
+  align-items: flex-start;
+  gap: 18px;
+  padding: 24px 26px;
+  background: #ffffff;
+  border-radius: 20px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+  transition: all 0.3s ease;
+}
+
+.pagina-carrera .tarjeta:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 36px rgba(0,0,0,0.12);
+}
+
+/* Icono */
+.pagina-carrera .caja-icono {
+  width: 48px;
+  height: 48px;
+  background: rgba(122, 31, 61, 0.12);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  margin-top: 4px;
+}
+
+.pagina-carrera .caja-icono .icono {
+  width: 24px;
+  height: 24px;
+}
+
+/* Texto */
+.pagina-carrera .tarjeta h3 {
+  margin: 0 0 8px 0;
+  font-size: 1.15rem;
+  color: var(--color-principal);
+}
+
+.pagina-carrera .tarjeta ul {
+  margin: 0;
+  padding-left: 16px;
+}
+
+.pagina-carrera .tarjeta li {
+  margin-bottom: 6px;
+  font-size: 0.93rem;
+  color: #444;
+  line-height: 1.4;
+}
+
+/* ================================
+   PERFIL PROFESIONAL
+   ================================ */
+
+.pagina-carrera .perfil-profesional {
+  max-width: 1000px;
+  margin: 0 auto 80px;
+  padding: 32px 36px;
+  background: #fcfafb;
+  border-radius: 22px;
+  box-shadow: 0 10px 24px rgba(0,0,0,0.05);
+}
+
+.pagina-carrera .perfil-profesional h3 {
+  color: var(--color-principal);
+  margin-bottom: 12px;
+  font-size: 1.25rem;
+}
+
+.pagina-carrera .perfil-profesional p {
+  margin: 0;
+  color: #333;
+  line-height: 1.6;
+  font-size: 0.95rem;
+}
+
+/* ================================
+   RESPONSIVE
+   ================================ */
+
+@media (max-width: 768px) {
+  .pagina-carrera .contenedor-tarjetas {
+    grid-template-columns: 1fr;
+  }
+
+  .pagina-carrera .tarjeta {
+    padding: 22px 22px;
+  }
+}
+/* ================================
+   CARRERA – PERFILES (AISLADO)
+   ================================ */
+
+.carrera-perfiles {
+  max-width: 1100px;
+  margin: 80px auto;
+  padding: 0 20px;
+}
+
+.carrera-perfiles-titulo {
+  font-size: 2rem;
+  color: var(--color-principal);
+  margin-bottom: 36px;
+}
+
+/* Grid */
+.carrera-perfiles-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 32px;
+  margin-bottom: 60px;
+}
+
+/* Card */
+.carrera-perfil-card {
+  background: #ffffff;
+  border-radius: 20px;
+  padding: 26px 28px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+  text-align: center;                /* texto debajo del título */
+  transition: all 0.3s ease;
+}
+
+.carrera-perfil-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 36px rgba(0,0,0,0.12);
+}
+
+/* Icono */
+.carrera-perfil-icono {
+  width: 56px;
+  height: 56px;
+  margin: 0 auto 12px;
+  background: rgba(122, 31, 61, 0.12);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.carrera-perfil-icono img {
+  width: 26px;
+  height: 26px;
+}
+
+/* Título */
+.carrera-perfil-heading {
+  margin: 0 0 10px;
+  font-size: 1.2rem;
+  color: var(--color-principal);
+}
+
+/* Lista */
+.carrera-perfil-lista {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.carrera-perfil-lista li {
+  margin-bottom: 6px;
+  font-size: 0.95rem;
+  color: #444;
+  line-height: 1.4;
+}
+
+/* Perfil Profesional */
+.carrera-perfil-profesional {
+  background: #fcfafb;
+  border-radius: 22px;
+  padding: 32px 36px;
+  box-shadow: 0 10px 24px rgba(0,0,0,0.05);
+}
+
+.carrera-perfil-profesional h3 {
+  color: var(--color-principal);
+  margin-bottom: 12px;
+  font-size: 1.25rem;
+}
+
+.carrera-perfil-profesional p {
+  margin: 0;
+  color: #333;
+  line-height: 1.6;
+  font-size: 0.95rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .carrera-perfiles-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ================================
+   CARRERA – FUNCIONES (AISLADO)
+   ================================ */
+
+.carrera-funciones {
+  max-width: 1100px;
+  margin: 80px auto;
+  padding: 0 20px;
+}
+
+.carrera-funciones-titulo {
+  font-size: 2rem;
+  color: var(--color-principal);
+  margin-bottom: 36px;
+}
+
+/* Grid */
+.carrera-funciones-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 28px;
+}
+
+/* Card */
+.carrera-funcion-card {
+  background: #ffffff;
+  border-radius: 20px;
+  padding: 28px 22px 26px;
+  text-align: center;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+  transition: all 0.3s ease;
+}
+
+.carrera-funcion-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 18px 38px rgba(0,0,0,0.12);
+}
+
+/* Icono */
+.carrera-funcion-icono {
+  width: 56px;
+  height: 56px;
+  margin: 0 auto 14px;
+  background: rgba(122, 31, 61, 0.12);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.carrera-funcion-icono img {
+  width: 26px;
+  height: 26px;
+}
+
+/* Título */
+.carrera-funcion-card h3 {
+  margin: 0 0 8px;
+  font-size: 1.1rem;
+  color: var(--color-principal);
+}
+
+/* Texto */
+.carrera-funcion-card p {
+  margin: 0;
+  font-size: 0.95rem;
+  color: #555;
+  line-height: 1.4;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .carrera-funciones-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 520px) {
+  .carrera-funciones-grid {
+    grid-template-columns: 1fr;
+  }
+}
+/* ================================
+   CARRERA – FAQ (ACORDEÓN FLUIDO)
+   ================================ */
+
+.carrera-faq {
+  max-width: 900px;
+  margin: 80px auto;
+  padding: 0 20px;
+}
+
+.carrera-faq-titulo {
+  font-size: 2rem;
+  color: var(--color-principal);
+  margin-bottom: 36px;
+}
+
+/* Lista */
+.carrera-faq-lista {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* Item */
+.carrera-faq-item {
+  background: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.06);
+  overflow: hidden;
+  transition: box-shadow 0.3s ease;
+}
+
+.carrera-faq-item.activo {
+  box-shadow: 0 14px 32px rgba(0,0,0,0.12);
+}
+
+/* Pregunta */
+.carrera-faq-pregunta {
+  width: 100%;
+  background: none;
+  border: none;
+  padding: 18px 22px;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--color-principal);
+  text-align: left;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  transition: background 0.25s ease;
+}
+
+.carrera-faq-pregunta:hover {
+  background: rgba(122, 31, 61, 0.05);
+}
+
+/* Icono */
+.carrera-faq-icono {
+  font-size: 1.2rem;
+  transition: transform 0.3s ease;
+}
+
+/* Rotación al abrir */
+.carrera-faq-item.activo .carrera-faq-icono {
+  transform: rotate(180deg);
+}
+
+/* Respuesta */
+.carrera-faq-respuesta {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease, padding 0.3s ease;
+  padding: 0 22px;
+}
+
+.carrera-faq-item.activo .carrera-faq-respuesta {
+  padding: 14px 22px 20px;
+  max-height: 300px; /* suficiente para el contenido */
+}
+
+.carrera-faq-respuesta p {
+  margin: 0;
+  color: #444;
+  line-height: 1.6;
+  font-size: 0.95rem;
+}
+/* ================================
+   FORMACIÓN – ÁREAS
+   ================================ */
+
+.formacion-areas {
+  max-width: 1100px;
+  margin: 80px auto;
+  padding: 0 20px;
+}
+
+.formacion-areas-titulo {
+  font-size: 2rem;
+  color: var(--color-principal);
+  margin-bottom: 36px;
+}
+
+.formacion-areas-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+}
+
+.formacion-area-card {
+  background: #ffffff;
+  border-radius: 20px;
+  padding: 28px 22px;
+  text-align: center;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+  transition: all 0.3s ease;
+}
+
+.formacion-area-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 18px 38px rgba(0,0,0,0.12);
+}
+
+.formacion-area-icono {
+  width: 56px;
+  height: 56px;
+  margin: 0 auto 12px;
+  background: rgba(122, 31, 61, 0.12);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.formacion-area-icono img {
+  width: 26px;
+  height: 26px;
+}
+
+.formacion-area-card h3 {
+  margin: 0 0 8px;
+  font-size: 1.15rem;
+  color: var(--color-principal);
+}
+
+.formacion-area-card p {
+  margin: 0;
+  font-size: 0.95rem;
+  color: #555;
+}
+
+/* ================================
+   FORMACIÓN – COMPETENCIAS
+   ================================ */
+
+.formacion-competencias {
+  max-width: 1100px;
+  margin: 80px auto;
+  padding: 0 20px;
+}
+
+.formacion-competencias-titulo {
+  font-size: 2rem;
+  color: var(--color-principal);
+  margin-bottom: 36px;
+}
+
+.formacion-competencias-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 28px;
+}
+
+.formacion-competencia-card {
+  background: #ffffff;
+  border-radius: 20px;
+  padding: 26px 22px;
+  text-align: center;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+  transition: all 0.3s ease;
+}
+
+.formacion-competencia-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 18px 38px rgba(0,0,0,0.12);
+}
+
+.formacion-competencia-icono {
+  width: 56px;
+  height: 56px;
+  margin: 0 auto 12px;
+  background: rgba(122, 31, 61, 0.12);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.formacion-competencia-icono img {
+  width: 26px;
+  height: 26px;
+}
+
+.formacion-competencia-card h3 {
+  margin: 0 0 8px;
+  font-size: 1.1rem;
+  color: var(--color-principal);
+}
+
+.formacion-competencia-card p {
+  margin: 0;
+  font-size: 0.95rem;
+  color: #555;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .formacion-areas-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .formacion-competencias-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 520px) {
+  .formacion-competencias-grid {
+    grid-template-columns: 1fr;
+  }
+}
+/* ================================
+   FORMACIÓN – BLOQUES TEXTO + IMAGEN
+   ================================ */
+
+.formacion-plan,
+.formacion-practicas {
+  max-width: 1100px;
+  margin: 90px auto;
+  padding: 0 20px;
+}
+
+.formacion-plan-titulo,
+.formacion-practicas-titulo {
+  font-size: 2rem;
+  color: var(--color-principal);
+  margin-bottom: 36px;
+}
+
+/* Contenedor principal */
+.formacion-bloque-texto-imagen {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+  align-items: center;
+}
+
+/* Texto */
+.formacion-bloque-texto p {
+  font-size: 1rem;
+  color: #444;
+  line-height: 1.7;
+  margin-bottom: 14px;
+}
+
+/* Botón */
+.boton-descarga {
+  display: inline-block;
+  margin-top: 10px;
+  padding: 10px 22px;
+  border-radius: 999px;
+  border: 1.5px solid var(--color-principal);
+  color: var(--color-principal);
+  text-decoration: none;
+  font-size: 0.9rem;
+  transition: all 0.3s ease;
+}
+
+.boton-descarga:hover {
+  background: var(--color-principal);
+  color: #ffffff;
+}
+
+/* Imagen */
+.formacion-bloque-imagen img {
+  width: 100%;
+  border-radius: 22px;
+  object-fit: cover;
+  box-shadow: 0 14px 35px rgba(0,0,0,0.12);
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .formacion-bloque-texto-imagen {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+
+  .formacion-plan-titulo,
+  .formacion-practicas-titulo {
+    text-align: center;
+  }
+}
+/* ================================
+   FORMACIÓN – MALLA CURRICULAR
+   ================================ */
+
+.formacion-malla {
+  max-width: 1100px;
+  margin: 90px auto;
+  padding: 0 20px;
+}
+
+.formacion-malla-titulo {
+  font-size: 2rem;
+  color: var(--color-principal);
+  margin-bottom: 40px;
+}
+
+/* Grid de años */
+.formacion-malla-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 24px;
+}
+
+/* Columna por año */
+.formacion-malla-columna {
+  background: #ffffff;
+  border-radius: 18px;
+  padding: 22px 20px 20px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+  transition: all 0.3s ease;
+}
+
+.formacion-malla-columna:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 18px 38px rgba(0,0,0,0.12);
+}
+
+/* Título año */
+.formacion-malla-columna h3 {
+  margin: 0 0 14px;
+  font-size: 1.1rem;
+  color: var(--color-principal);
+  border-bottom: 2px solid rgba(122, 31, 61, 0.15);
+  padding-bottom: 6px;
+}
+
+/* Lista cursos */
+.formacion-malla-columna ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.formacion-malla-columna li {
+  font-size: 0.9rem;
+  color: #444;
+  padding: 6px 0;
+  border-bottom: 1px dashed rgba(0,0,0,0.08);
+}
+
+.formacion-malla-columna li:last-child {
+  border-bottom: none;
+}
+
+/* Botón descarga */
+.formacion-malla-descarga {
+  margin-top: 36px;
+}
+
+/* Responsive */
+@media (max-width: 1100px) {
+  .formacion-malla-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .formacion-malla-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 480px) {
+  .formacion-malla-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .formacion-malla-titulo {
+    text-align: center;
+  }
+}
+/* ================================
+   FORMACIÓN – MALLA CURRICULAR
+   ================================ */
+
+.formacion-malla {
+  max-width: 1100px;
+  margin: 90px auto;
+  padding: 0 20px;
+}
+
+.formacion-malla-titulo {
+  font-size: 2rem;
+  color: var(--color-principal);
+  margin-bottom: 40px;
+}
+
+/* Grid de años */
+.formacion-malla-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 24px;
+}
+
+/* Columna por año */
+.formacion-malla-columna {
+  background: #ffffff;
+  border-radius: 18px;
+  padding: 22px 20px 20px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+  transition: all 0.3s ease;
+}
+
+.formacion-malla-columna:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 18px 38px rgba(0,0,0,0.12);
+}
+
+/* Título año */
+.formacion-malla-columna h3 {
+  margin: 0 0 14px;
+  font-size: 1.1rem;
+  color: var(--color-principal);
+  border-bottom: 2px solid rgba(122, 31, 61, 0.15);
+  padding-bottom: 6px;
+}
+
+/* Lista cursos */
+.formacion-malla-columna ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.formacion-malla-columna li {
+  font-size: 0.9rem;
+  color: #444;
+  padding: 6px 0;
+  border-bottom: 1px dashed rgba(0,0,0,0.08);
+}
+
+.formacion-malla-columna li:last-child {
+  border-bottom: none;
+}
+
+/* Botón descarga */
+.formacion-malla-descarga {
+  margin-top: 36px;
+}
+
+/* Responsive */
+@media (max-width: 1100px) {
+  .formacion-malla-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .formacion-malla-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 480px) {
+  .formacion-malla-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .formacion-malla-titulo {
+    text-align: center;
+  }
+}
+.formacion-malla-descarga {
+  margin-top: 36px;
+  display: flex;
+  justify-content: center;
+}
+/* ============================= */
+/*  SOBRE LA FACULTAD            */
+/* ============================= */
+
+.pagina-facultad .facultad-sobre {
+  padding: 4rem 1.5rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.pagina-facultad .facultad-sobre-titulo {
+  font-size: 2rem;
+  color: var(--color-principal);
+  margin-bottom: 2rem;
+  position: relative;
+  padding-left: 1rem;
+}
+
+.pagina-facultad .facultad-sobre-titulo::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.2rem;
+  width: 4px;
+  height: 70%;
+  background-color: var(--color-principal);
+  border-radius: 4px;
+}
+
+.pagina-facultad .facultad-sobre-contenido {
+  background: linear-gradient(
+    180deg,
+    rgba(122, 31, 61, 0.05) 0%,
+    rgba(122, 31, 61, 0.02) 100%
+  );
+  border-radius: 28px;
+  padding: 2.5rem 3rem;
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 2.5rem;
+  align-items: center;
+}
+
+.pagina-facultad .facultad-sobre-texto p {
+  color: #444;
+  font-size: 1rem;
+  line-height: 1.7;
+  margin-bottom: 1rem;
+}
+
+.pagina-facultad .facultad-sobre-imagen img {
+  width: 100%;
+  height: 100%;
+  max-height: 320px;
+  object-fit: cover;
+  border-radius: 22px;
+  display: block;
+
+  /* Esto recorta la estrellita sin editar la imagen */
+  object-position: center top;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .pagina-facultad .facultad-sobre-contenido {
+    grid-template-columns: 1fr;
+    padding: 2rem 1.5rem;
+  }
+
+  .pagina-facultad .facultad-sobre-imagen img {
+    max-height: 260px;
+  }
+}
+
+
+/* ============================= */
+/*  MISIÓN - VISIÓN - VALORES    */
+/* ============================= */
+
+.pagina-facultad .facultad-mvv {
+  padding: 4rem 1.5rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.pagina-facultad .facultad-mvv-titulo {
+  font-size: 2rem;
+  color: var(--color-principal);
+  margin-bottom: 2.5rem;
+  position: relative;
+  padding-left: 1rem;
+}
+
+.pagina-facultad .facultad-mvv-titulo::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.2rem;
+  width: 4px;
+  height: 70%;
+  background-color: var(--color-principal);
+  border-radius: 4px;
+}
+
+.pagina-facultad .facultad-mvv-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 2rem;
+}
+
+.pagina-facultad .facultad-mvv-card {
+  background: #ffffff;
+  border-radius: 20px;
+  padding: 2rem 1.8rem;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.06);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.pagina-facultad .facultad-mvv-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 35px rgba(0,0,0,0.08);
+}
+
+.pagina-facultad .facultad-mvv-icono {
+  width: 54px;
+  height: 54px;
+  background: rgba(122,31,61,0.08);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+
+.pagina-facultad .facultad-mvv-icono img {
+  width: 26px;
+  height: 26px;
+}
+
+.pagina-facultad .facultad-mvv-card h3 {
+  color: var(--color-principal);
+  margin-bottom: 0.8rem;
+  font-size: 1.2rem;
+}
+
+.pagina-facultad .facultad-mvv-card p,
+.pagina-facultad .facultad-mvv-card li {
+  color: #555;
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+.pagina-facultad .facultad-mvv-card ul {
+  padding-left: 1.1rem;
+}
+
+.pagina-facultad .facultad-mvv-card ul li {
+  margin-bottom: 0.4rem;
+}
+
+/* ============================= */
+/*  HISTORIA FACULTAD - TIMELINE */
+/* ============================= */
+
+.pagina-facultad .facultad-historia {
+  padding: 4rem 1.5rem;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.pagina-facultad .facultad-historia-titulo {
+  font-size: 2rem;
+  color: var(--color-principal);
+  margin-bottom: 2.5rem;
+  position: relative;
+  padding-left: 1rem;
+}
+
+.pagina-facultad .facultad-historia-titulo::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.2rem;
+  width: 4px;
+  height: 70%;
+  background-color: var(--color-principal);
+  border-radius: 4px;
+}
+
+.pagina-facultad .facultad-historia-linea {
+  position: relative;
+  margin-left: 1.5rem;
+  padding-left: 2rem;
+  border-left: 2px solid rgba(122, 31, 61, 0.2);
+}
+
+.pagina-facultad .facultad-historia-item {
+  position: relative;
+  margin-bottom: 2.5rem;
+}
+
+.pagina-facultad .facultad-historia-punto {
+  position: absolute;
+  left: -2.15rem;
+  top: 0.3rem;
+  width: 14px;
+  height: 14px;
+  background-color: var(--color-principal);
+  border-radius: 50%;
+}
+
+.pagina-facultad .facultad-historia-contenido {
+  background: #ffffff;
+  border-radius: 18px;
+  padding: 1.5rem 1.8rem;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.04);
+}
+
+.pagina-facultad .facultad-historia-contenido h3 {
+  margin: 0 0 0.5rem;
+  color: var(--color-principal);
+  font-size: 1.1rem;
+}
+
+.pagina-facultad .facultad-historia-contenido p {
+  margin: 0;
+  color: #555;
+  line-height: 1.6;
+  font-size: 0.95rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .pagina-facultad .facultad-historia-linea {
+    margin-left: 0;
+    padding-left: 1.5rem;
+  }
+
+  .pagina-facultad .facultad-historia-punto {
+    left: -1.9rem;
+  }
+}
+/* =============================== */
+/*         AUTORIDADES             */
+/* =============================== */
+
+.pagina-facultad .facultad-autoridades {
+  padding: 4rem 1.5rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.pagina-facultad .facultad-autoridades-titulo {
+  font-size: 2rem;
+  color: var(--color-principal);
+  margin-bottom: 2.5rem;
+  position: relative;
+  padding-left: 1rem;
+}
+
+.pagina-facultad .facultad-autoridades-titulo::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.2rem;
+  width: 4px;
+  height: 70%;
+  background-color: var(--color-principal);
+  border-radius: 4px;
+}
+
+.pagina-facultad .facultad-autoridades-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+}
+
+.pagina-facultad .autoridad-card {
+  background: #ffffff;
+  border-radius: 20px;
+  padding: 1.2rem;
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+  position: relative;
+  overflow: hidden;
+}
+
+.pagina-facultad .autoridad-card::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 6px;
+  height: 100%;
+  background-color: var(--color-principal);
+  border-radius: 6px;
+}
+
+.pagina-facultad .autoridad-card img {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 3px solid var(--color-principal);
+  flex-shrink: 0;
+}
+
+.pagina-facultad .autoridad-info h3 {
+  margin: 0 0 0.3rem;
+  color: var(--color-principal);
+  font-size: 1rem;
+}
+
+.pagina-facultad .autoridad-nombre {
+  margin: 0 0 0.3rem;
+  font-weight: 600;
+  color: #222;
+  font-size: 0.95rem;
+}
+
+.pagina-facultad .autoridad-resolucion {
+  font-size: 0.8rem;
+  color: #777;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .pagina-facultad .facultad-autoridades-grid {
+    grid-template-columns: 1fr;
+  }
+}
+/* ============================= */
+/* CONSEJO DE FACULTAD */
+/* ============================= */
+
+.facultad-consejo {
+  max-width: 1200px;
+  margin: 0 auto 90px;
+  padding: 0 20px;
+}
+
+/* Título principal */
+.facultad-consejo-titulo {
+  font-size: 28px;
+  color: #7a1f3d;
+  margin-bottom: 40px;
+  position: relative;
+  padding-left: 14px;
+}
+
+.facultad-consejo-titulo::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 6px;
+  width: 4px;
+  height: 70%;
+  background: #7a1f3d;
+  border-radius: 2px;
+}
+
+/* Bloques */
+.consejo-bloque {
+  margin-bottom: 50px;
+}
+
+.consejo-subtitulo {
+  font-size: 20px;
+  color: #7a1f3d;
+  margin-bottom: 20px;
+}
+
+/* ============================= */
+/* PRESIDENTA CARD */
+/* ============================= */
+
+.consejo-card-img {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  background: #ffffff;
+  padding: 22px 26px;
+  border-radius: 18px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.06);
+  max-width: 520px;
+}
+
+.consejo-card-img img {
+  width: 70px;
+  height: 70px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 3px solid #7a1f3d;
+}
+
+.consejo-info {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.consejo-nombre {
+  font-weight: 600;
+  color: #2b2b2b;
+  margin: 0;
+}
+
+.consejo-cargo {
+  font-size: 14px;
+  color: #7a1f3d;
+  font-weight: 500;
+}
+
+/* ============================= */
+/* TABLAS */
+/* ============================= */
+
+.tabla-contenedor {
+  overflow-x: auto;
+  background: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+}
+
+/* Tabla general */
+.tabla-consejo {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 600px;
+}
+
+.tabla-consejo thead {
+  background: #7a1f3d;
+  color: #ffffff;
+}
+
+.tabla-consejo th,
+.tabla-consejo td {
+  padding: 14px 16px;
+  text-align: left;
+  font-size: 14px;
+}
+
+.tabla-consejo th {
+  font-weight: 600;
+  letter-spacing: 0.3px;
+}
+
+.tabla-consejo tbody tr {
+  border-bottom: 1px solid #eee;
+  transition: background 0.2s ease;
+}
+
+.tabla-consejo tbody tr:hover {
+  background: rgba(122,31,61,0.04);
+}
+
+.tabla-consejo tbody td {
+  color: #333;
+}
+
+/* Primera columna (N°) */
+.tabla-consejo td:first-child {
+  font-weight: 600;
+  color: #7a1f3d;
+}
+
+/* ============================= */
+/* RESPONSIVE */
+/* ============================= */
+
+@media (max-width: 768px) {
+  .facultad-consejo-titulo {
+    font-size: 24px;
+  }
+
+  .consejo-subtitulo {
+    font-size: 18px;
+  }
+
+  .consejo-card-img {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .tabla-consejo th,
+  .tabla-consejo td {
+    padding: 12px 14px;
+    font-size: 13px;
+  }
+}
+/* Centrar bloque de Presidenta */
+.consejo-bloque:first-of-type {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Centrar la card */
+.consejo-card-img {
+  margin: 0 auto;
+}
+.consejo-card-img {
+  background: linear-gradient(180deg, #ffffff 0%, #faf6f8 100%);
+  border-left: 5px solid #7a1f3d;
+}
+/* ============================= */
+/* CUERPO DOCENTE */
+/* ============================= */
+
+.docentes {
+  max-width: 1200px;
+  margin: 0 auto 90px;
+  padding: 0 20px;
+}
+
+.docentes h2 {
+  font-size: 28px;
+  color: #7a1f3d;
+  margin-bottom: 16px;
+  position: relative;
+  padding-left: 14px;
+}
+
+.docentes h2::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 6px;
+  width: 4px;
+  height: 70%;
+  background: #7a1f3d;
+  border-radius: 2px;
+}
+
+.docentes p {
+  max-width: 800px;
+  margin-bottom: 30px;
+  color: #444;
+  line-height: 1.6;
+}
+
+/* Contenedor tabla */
+.docentes .tabla-responsiva {
+  overflow-x: auto;
+  background: #ffffff;
+  border-radius: 18px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+}
+
+/* Tabla */
+.docentes .tabla-datos {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 700px;
+}
+
+.docentes .tabla-datos thead {
+  background: #7a1f3d;
+  color: #ffffff;
+}
+
+.docentes .tabla-datos th,
+.docentes .tabla-datos td {
+  padding: 14px 16px;
+  text-align: left;
+  font-size: 14px;
+}
+
+.docentes .tabla-datos th {
+  font-weight: 600;
+  letter-spacing: 0.3px;
+}
+
+/* Filas */
+.docentes .tabla-datos tbody tr {
+  border-bottom: 1px solid #eee;
+  transition: background 0.2s ease;
+}
+
+.docentes .tabla-datos tbody tr:hover {
+  background: rgba(122,31,61,0.04);
+}
+
+/* Primera columna (N°) */
+.docentes .tabla-datos td:first-child {
+  font-weight: 600;
+  color: #7a1f3d;
+  width: 60px;
+}
+
+/* Categoría */
+.docentes .tabla-datos td:nth-child(3) {
+  font-weight: 500;
+  color: #333;
+}
+
+/* Botón enlace CTI */
+.docentes .boton-enlace {
+  display: inline-block;
+  padding: 6px 14px;
+  border-radius: 20px;
+  background: transparent;
+  border: 1.5px solid #7a1f3d;
+  color: #7a1f3d;
+  font-size: 13px;
+  font-weight: 500;
+  text-decoration: none;
+  transition: all 0.25s ease;
+}
+
+.docentes .boton-enlace:hover {
+  background: #7a1f3d;
+  color: #ffffff;
+}
+
+/* ============================= */
+/* RESPONSIVE */
+/* ============================= */
+
+@media (max-width: 768px) {
+  .docentes h2 {
+    font-size: 24px;
+  }
+
+  .docentes .tabla-datos th,
+  .docentes .tabla-datos td {
+    padding: 12px 14px;
+    font-size: 13px;
+  }
+}
+/* ============================= */
+/* INFRAESTRUCTURA */
+/* ============================= */
+
+.infraestructura {
+  max-width: 1200px;
+  margin: 0 auto 100px;
+  padding: 0 20px;
+}
+
+.infraestructura h2 {
+  font-size: 28px;
+  color: #7a1f3d;
+  margin-bottom: 12px;
+  position: relative;
+  padding-left: 14px;
+}
+
+.infraestructura h2::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 6px;
+  width: 4px;
+  height: 70%;
+  background: #7a1f3d;
+  border-radius: 2px;
+}
+
+.infraestructura p {
+  max-width: 800px;
+  margin-bottom: 30px;
+  color: #444;
+  line-height: 1.6;
+}
+
+.infraestructura h3 {
+  color: #7a1f3d;
+  margin-bottom: 18px;
+  font-size: 20px;
+}
+
+/* ============================= */
+/* SLIDER */
+/* ============================= */
+
+.carrusel-infraestructura {
+  position: relative;
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.carrusel-viewport {
+  width: 100%;
+  overflow: hidden;
+  border-radius: 22px;
+  box-shadow: 0 12px 30px rgba(0,0,0,0.08);
+}
+
+.galeria-infraestructura {
+  display: flex;
+  width: 100%;
+  transition: transform 0.5s ease-in-out;
+}
+
+.item-galeria {
+  min-width: 100%;
+  height: 420px;
+  flex-shrink: 0;
+}
+
+.item-galeria img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* ============================= */
+/* BOTONES */
+/* ============================= */
+
+.carrusel-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(122, 31, 61, 0.9);
+  color: #fff;
+  border: none;
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.25s ease;
+  z-index: 10;
+}
+
+.carrusel-btn:hover {
+  background: #5f1730;
+  transform: translateY(-50%) scale(1.08);
+}
+
+.carrusel-btn.prev {
+  left: -20px;
+}
+
+.carrusel-btn.next {
+  right: -20px;
+}
+
+/* ============================= */
+/* RESPONSIVE */
+/* ============================= */
+
+@media (max-width: 768px) {
+  .item-galeria {
+    height: 260px;
+  }
+
+  .carrusel-btn {
+    width: 38px;
+    height: 38px;
+    font-size: 22px;
+  }
+
+  .carrusel-btn.prev {
+    left: 10px;
+  }
+
+  .carrusel-btn.next {
+    right: 10px;
+  }
+}
+/* Alinear "Galería de Imágenes" con el carrusel */
+
+.infraestructura h3 {
+  max-width: 900px;   /* mismo ancho que el carrusel */
+  margin: 0 auto 18px;
+  padding-left: 4px;  /* micro ajuste visual */
+}
+
+
+.investigacion {
+  max-width: 1200px;
+  margin: 0 auto 90px auto;
+  padding: 0 20px;
+}
+.investigacion h2 {
+  font-size: 2rem;
+  color: #7a1f3d;
+  margin-bottom: 12px;
+  position: relative;
+  padding-left: 14px;
+}
+
+.investigacion h2::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 6px;
+  width: 4px;
+  height: 70%;
+  background: #7a1f3d;
+  border-radius: 2px;
+}
+
+.investigacion h3 {
+  font-size: 1.3rem;
+  color: #7a1f3d;
+  margin: 40px 0 14px 0;
+}
+.investigacion p {
+  max-width: 900px;
+  line-height: 1.7;
+  color: #444;
+  margin-bottom: 20px;
+}
+.tabla-responsiva {
+  width: 100%;
+  overflow-x: auto;
+  margin: 20px 0 50px 0;
+}
+.tabla-datos {
+  width: 100%;
+  border-collapse: collapse;
+  background: #fff;
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.06);
+}
+.tabla-datos thead {
+  background: #7a1f3d;
+  color: #fff;
+}
+
+.tabla-datos thead th {
+  padding: 14px 16px;
+  text-align: left;
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+.tabla-datos tbody td {
+  padding: 14px 16px;
+  border-bottom: 1px solid #eee;
+  font-size: 0.95rem;
+  color: #333;
+}
+.tabla-datos tbody tr:hover {
+  background: #faf4f6;
+}
+.boton-descarga {
+  display: inline-block;
+  padding: 6px 14px;
+  border-radius: 20px;
+  background: #7a1f3d;
+  color: #fff;
+  font-size: 0.85rem;
+  text-decoration: none;
+  transition: all 0.25s ease;
+}
+
+.boton-descarga:hover {
+  background: #5e172f;
+  transform: translateY(-1px);
+}
+@media (max-width: 768px) {
+  .investigacion h2 {
+    font-size: 1.6rem;
+  }
+
+  .investigacion h3 {
+    font-size: 1.15rem;
+  }
+
+  .tabla-datos thead {
+    font-size: 0.85rem;
+  }
+
+  .tabla-datos tbody td {
+    font-size: 0.85rem;
+    padding: 12px;
+  }
+}
+.documentos-normativos {
+  max-width: 1200px;
+  margin: 0 auto 90px auto;
+  padding: 0 20px;
+}
+.documentos-normativos h2 {
+  font-size: 2rem;
+  color: #7a1f3d;
+  margin-bottom: 12px;
+  position: relative;
+  padding-left: 14px;
+}
+.documentos-normativos h2::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 6px;
+  width: 4px;
+  height: 70%;
+  background: #7a1f3d;
+  border-radius: 2px;
+}
+.documentos-normativos h3 {
+  font-size: 1.3rem;
+  color: #7a1f3d;
+  margin: 40px 0 14px 0;
+}
+.documentos-normativos p {
+    color: #2c2c2c;
+}
+/* =========================
+   VIDA UNIVERSITARIA – ENCABEZADO
+========================= */
+
+.vida-encabezado {
+  max-width: 1200px;
+  margin: 60px auto 80px;
+  padding: 60px 40px;
+  background: linear-gradient(
+    180deg,
+    rgba(122, 31, 61, 0.08) 0%,
+    rgba(122, 31, 61, 0.03) 100%
+  );
+  border-radius: 28px;
+  text-align: center;
+}
+
+.vida-encabezado h1 {
+  font-size: 2.2rem;
+  color: #7a1f3d;
+  margin-bottom: 16px;
+}
+
+.vida-encabezado p {
+  max-width: 700px;
+  margin: 0 auto;
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #444;
+}
+@media (max-width: 768px) {
+  .vida-encabezado {
+    padding: 40px 20px;
+    margin: 40px 16px 60px;
+  }
+
+  .vida-encabezado h1 {
+    font-size: 1.8rem;
+  }
+
+  .vida-encabezado p {
+    font-size: 0.95rem;
+  }
+}
+/* ===============================
+   VIDA UNIVERSITARIA – ACTIVIDADES
+================================ */
+
+.vida-actividades {
+  max-width: 1200px;
+  margin: 0 auto 100px;
+  padding: 0 24px;
+}
+
+.vida-actividades h2 {
+  position: relative;
+  padding-left: 16px;
+  margin-bottom: 16px;
+  color: #7a1f3d;
+}
+
+.vida-actividades h2::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 6px;
+  width: 4px;
+  height: 70%;
+  background: #7a1f3d;
+  border-radius: 3px;
+}
+
+.vida-descripcion {
+  max-width: 800px;
+  margin-bottom: 40px;
+  color: #444;
+  line-height: 1.6;
+}
+
+/* GRID */
+
+.vida-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+}
+
+/* CARD */
+
+.vida-card {
+  background: #ffffff;
+  border-radius: 20px;
+  padding: 32px 26px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.06);
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+.vida-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 14px 30px rgba(0,0,0,0.10);
+}
+
+/* ICONO */
+
+.vida-icono-box {
+  width: 70px;
+  height: 70px;
+  margin: 0 auto 18px;
+  background: rgba(122, 31, 61, 0.1);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.vida-icono {
+  width: 32px;
+  height: 32px;
+}
+
+/* TEXTO */
+
+.vida-card h3 {
+  color: #7a1f3d;
+  margin-bottom: 10px;
+  font-size: 1.15rem;
+}
+
+.vida-card p {
+  color: #555;
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+/* ===============================
+   RESPONSIVE
+================================ */
+
+@media (max-width: 900px) {
+  .vida-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .vida-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .vida-card {
+    padding: 26px 20px;
+  }
+}
+/* ===============================
+   VIDA UNIVERSITARIA – CONVENIOS
+================================ */
+
+.vida-convenios {
+  max-width: 1000px;
+  margin: 0 auto 100px;
+  padding: 0 24px;
+}
+
+.vida-convenios h2 {
+  position: relative;
+  padding-left: 16px;
+  margin-bottom: 16px;
+  color: #7a1f3d;
+}
+
+.vida-convenios h2::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 6px;
+  width: 4px;
+  height: 70%;
+  background: #7a1f3d;
+  border-radius: 3px;
+}
+
+.vida-convenios .vida-descripcion {
+  max-width: 800px;
+  margin-bottom: 28px;
+  color: #444;
+  line-height: 1.6;
+}
+
+/* LISTA */
+
+.vida-lista-convenios {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.vida-lista-convenios li {
+  background: #ffffff;
+  border-radius: 14px;
+  padding: 14px 20px;
+  margin-bottom: 14px;
+  box-shadow: 0 6px 16px rgba(0,0,0,0.05);
+  position: relative;
+  padding-left: 46px;
+  color: #333;
+}
+
+/* Viñeta personalizada */
+
+.vida-lista-convenios li::before {
+  content: "✔";
+  position: absolute;
+  left: 18px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #7a1f3d;
+  font-weight: bold;
+}
+
+/* ===============================
+   RESPONSIVE
+================================ */
+
+@media (max-width: 600px) {
+  .vida-convenios {
+    padding: 0 16px;
+  }
+
+  .vida-lista-convenios li {
+    padding: 12px 16px 12px 42px;
+    font-size: 0.95rem;
+  }
+}
+/* ===============================
+   VIDA UNIVERSITARIA – NOTICIAS
+================================ */
+
+.vida-noticias {
+  max-width: 1200px;
+  margin: 0 auto 100px;
+  padding: 0 24px;
+}
+
+.vida-noticias h2 {
+  position: relative;
+  padding-left: 16px;
+  margin-bottom: 16px;
+  color: #7a1f3d;
+}
+
+.vida-noticias h2::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 6px;
+  width: 4px;
+  height: 70%;
+  background: #7a1f3d;
+  border-radius: 3px;
+}
+
+.vida-noticias .vida-descripcion {
+  max-width: 800px;
+  margin-bottom: 40px;
+  color: #444;
+  line-height: 1.6;
+}
+
+/* GRID */
+
+.vida-noticias-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+}
+
+/* CARD */
+
+.vida-noticia-card {
+  background: #ffffff;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.06);
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+.vida-noticia-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 14px 30px rgba(0,0,0,0.10);
+}
+
+.vida-noticia-card img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  display: block;
+}
+
+/* CONTENIDO */
+
+.vida-noticia-contenido {
+  padding: 20px 22px 24px;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.vida-noticia-contenido h3 {
+  color: #7a1f3d;
+  font-size: 1.1rem;
+  margin-bottom: 10px;
+}
+
+.vida-noticia-contenido p {
+  color: #555;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  flex-grow: 1;
+}
+
+/* FECHA */
+
+.vida-noticia-fecha {
+  margin-top: 14px;
+  font-size: 0.85rem;
+  color: #7a1f3d;
+  font-weight: 500;
+}
+
+/* ===============================
+   RESPONSIVE
+================================ */
+
+@media (max-width: 900px) {
+  .vida-noticias-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .vida-noticias-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .vida-noticia-card img {
+    height: 160px;
+  }
+
+  .vida-noticia-contenido {
+    padding: 18px 18px 20px;
+  }
+}
+/* ===============================
+   VIDA UNIVERSITARIA – REDES SOCIALES
+================================ */
+
+.vida-redes {
+  max-width: 1000px;
+  margin: 0 auto 120px;
+  padding: 0 24px;
+  text-align: center;
+}
+
+.vida-redes h2 {
+  position: relative;
+  padding-left: 16px;
+  margin-bottom: 16px;
+  color: #7a1f3d;
+  display: inline-block;
+}
+
+.vida-redes h2::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 6px;
+  width: 4px;
+  height: 70%;
+  background: #7a1f3d;
+  border-radius: 3px;
+}
+
+.vida-redes .vida-descripcion {
+  max-width: 700px;
+  margin: 0 auto 40px;
+  color: #444;
+  line-height: 1.6;
+}
+
+/* GRID */
+
+.vida-redes-grid {
+  display: flex;
+  justify-content: center;
+  gap: 26px;
+  flex-wrap: wrap;
+}
+
+/* CARD */
+
+.vida-red-card {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 22px;
+  border-radius: 30px;
+  background: #ffffff;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.06);
+  text-decoration: none;
+  color: #333;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.vida-red-card img {
+  width: 22px;
+  height: 22px;
+}
+
+/* HOVER */
+
+.vida-red-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 26px rgba(0,0,0,0.10);
+}
+
+/* COLORES POR RED */
+
+.vida-red-card.facebook {
+  border: 1.5px solid #1877f2;
+}
+
+.vida-red-card.instagram {
+  border: 1.5px solid #e1306c;
+}
+
+.vida-red-card.youtube {
+  border: 1.5px solid #ff0000;
+}
+
+/* ===============================
+   RESPONSIVE
+================================ */
+
+@media (max-width: 600px) {
+  .vida-redes-grid {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .vida-red-card {
+    width: 100%;
+    max-width: 280px;
+    justify-content: center;
+  }
+}
+/* ===============================
+   CONTACTO – ENCABEZADO
+================================ */
+
+.contacto-encabezado {
+  max-width: 1200px;
+  margin: 60px auto 80px;
+  padding: 60px 40px;
+  background: linear-gradient(
+    180deg,
+    rgba(122, 31, 61, 0.08) 0%,
+    rgba(122, 31, 61, 0.03) 100%
+  );
+  border-radius: 28px;
+  text-align: center;
+}
+
+.contacto-encabezado h1 {
+  font-size: 2.2rem;
+  color: #7a1f3d;
+  margin-bottom: 16px;
+}
+
+.contacto-encabezado p {
+  max-width: 720px;
+  margin: 0 auto;
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #444;
+}
+
+/* ===============================
+   RESPONSIVE
+================================ */
+
+@media (max-width: 768px) {
+  .contacto-encabezado {
+    padding: 40px 20px;
+    margin: 40px 16px 60px;
+  }
+
+  .contacto-encabezado h1 {
+    font-size: 1.8rem;
+  }
+
+  .contacto-encabezado p {
+    font-size: 0.95rem;
+  }
+}
+/* ===============================
+   CONTACTO – DATOS DE CONTACTO
+================================ */
+
+.contacto-datos {
+  max-width: 1200px;
+  margin: 0 auto 100px;
+  padding: 0 24px;
+}
+
+.contacto-datos h2 {
+  position: relative;
+  padding-left: 16px;
+  margin-bottom: 40px;
+  color: #7a1f3d;
+}
+
+.contacto-datos h2::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 6px;
+  width: 4px;
+  height: 70%;
+  background: #7a1f3d;
+  border-radius: 3px;
+}
+
+/* GRID */
+
+.contacto-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+}
+
+/* CARD */
+
+.contacto-card {
+  background: #ffffff;
+  border-radius: 20px;
+  padding: 28px 26px 30px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.06);
+  transition: all 0.3s ease;
+}
+
+.contacto-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 14px 30px rgba(0,0,0,0.10);
+}
+
+/* HEADER DE CARD */
+
+.contacto-card-header {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 16px;
+}
+
+.contacto-card-header h3 {
+  margin: 0;
+  color: #7a1f3d;
+  font-size: 1.15rem;
+}
+
+/* ICONO */
+
+.contacto-icono-box {
+  width: 44px;
+  height: 44px;
+  background: rgba(122, 31, 61, 0.1);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.contacto-icono {
+  width: 22px;
+  height: 22px;
+}
+
+/* TEXTO */
+
+.contacto-card p {
+  margin: 6px 0;
+  color: #444;
+  line-height: 1.5;
+  font-size: 0.95rem;
+}
+
+.contacto-card a {
+  color: #7a1f3d;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.contacto-card a:hover {
+  text-decoration: underline;
+}
+
+/* ===============================
+   RESPONSIVE
+================================ */
+
+@media (max-width: 900px) {
+  .contacto-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .contacto-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .contacto-card {
+    padding: 24px 20px;
+  }
+}
+/* ===============================
+   CONTACTO – CANALES RÁPIDOS
+================================ */
+
+.contacto-canales {
+  max-width: 1000px;
+  margin: 0 auto 120px;
+  padding: 0 24px;
+  text-align: center;
+}
+
+.contacto-canales h2 {
+  position: relative;
+  padding-left: 16px;
+  margin-bottom: 16px;
+  color: #7a1f3d;
+  display: inline-block;
+}
+
+.contacto-canales h2::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 6px;
+  width: 4px;
+  height: 70%;
+  background: #7a1f3d;
+  border-radius: 3px;
+}
+
+.contacto-descripcion {
+  max-width: 700px;
+  margin: 0 auto 40px;
+  color: #444;
+  line-height: 1.6;
+}
+
+/* GRID */
+
+.contacto-canales-grid {
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+
+/* CARD */
+
+.contacto-canal-card {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 22px;
+  border-radius: 30px;
+  background: #ffffff;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.06);
+  text-decoration: none;
+  color: #333;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.contacto-canal-card img {
+  width: 22px;
+  height: 22px;
+}
+
+/* HOVER */
+
+.contacto-canal-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 26px rgba(0,0,0,0.10);
+}
+
+/* COLORES */
+
+.contacto-canal-card.facebook {
+  border: 1.5px solid #1877f2;
+}
+
+.contacto-canal-card.instagram {
+  border: 1.5px solid #e1306c;
+}
+
+.contacto-canal-card.youtube {
+  border: 1.5px solid #ff0000;
+}
+
+.contacto-canal-card.aula {
+  border: 1.5px solid #7a1f3d;
+}
+
+/* ===============================
+   RESPONSIVE
+================================ */
+
+@media (max-width: 600px) {
+  .contacto-canales-grid {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .contacto-canal-card {
+    width: 100%;
+    max-width: 280px;
+    justify-content: center;
+  }
+}
+/* ===============================
+   CONTACTO – FORMULARIO Y UBICACIÓN
+================================ */
+
+.contacto-seccion-grid {
+  max-width: 1200px;
+  margin: 0 auto 120px;
+  padding: 0 24px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 50px;
+}
+
+/* ===============================
+   FORMULARIO
+================================ */
+
+.contacto-formulario h2,
+.contacto-ubicacion h2 {
+  position: relative;
+  padding-left: 16px;
+  margin-bottom: 16px;
+  color: #7a1f3d;
+}
+
+.contacto-formulario h2::before,
+.contacto-ubicacion h2::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 6px;
+  width: 4px;
+  height: 70%;
+  background: #7a1f3d;
+  border-radius: 3px;
+}
+
+.contacto-form {
+  background: #ffffff;
+  border-radius: 20px;
+  padding: 30px 28px 34px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.06);
+}
+
+.contacto-campo {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 18px;
+}
+
+.contacto-campo label {
+  font-size: 0.9rem;
+  margin-bottom: 6px;
+  color: #444;
+}
+
+.contacto-campo input,
+.contacto-campo textarea {
+  padding: 10px 12px;
+  border-radius: 10px;
+  border: 1px solid #ddd;
+  font-size: 0.95rem;
+  outline: none;
+  transition: border 0.2s ease;
+}
+
+.contacto-campo input:focus,
+.contacto-campo textarea:focus {
+  border-color: #7a1f3d;
+}
+
+/* BOTÓN */
+
+.contacto-boton-enviar {
+  margin-top: 10px;
+  padding: 12px 26px;
+  background: #7a1f3d;
+  color: #ffffff;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  font-size: 0.95rem;
+  transition: all 0.3s ease;
+}
+
+.contacto-boton-enviar:hover {
+  background: #5c162d;
+  transform: translateY(-2px);
+}
+
+/* ===============================
+   UBICACIÓN
+================================ */
+
+.contacto-ubicacion-bloques {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.contacto-direccion p {
+  margin: 4px 0;
+  color: #444;
+  font-size: 0.95rem;
+}
+
+/* MAPA */
+
+.contacto-mapa iframe {
+  width: 100%;
+  height: 320px;
+  border: 0;
+  border-radius: 16px;
+}
+
+/* ===============================
+   RESPONSIVE
+================================ */
+
+@media (max-width: 900px) {
+  .contacto-seccion-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .contacto-form {
+    padding: 26px 22px 30px;
+  }
+}
+.footer-sitio {
+  background-color: #7a1f3d;
+  color: #ffffff;
+  margin-top: 80px;
+}
+
+.footer-contenido {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 60px 20px 40px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 40px;
+}
+
+/* ===== Identidad tipo header ===== */
+.footer-identidad {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.footer-logo {
+  width: 56px;
+  height: auto;
+}
+
+.footer-textos {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.footer-universidad {
+  font-size: 0.9rem;
+  opacity: 0.9;
+}
+
+.footer-facultad {
+  font-size: 1.2rem;
+  font-weight: 700;
+}
+
+.footer-ubicacion {
+  font-size: 0.9rem;
+  opacity: 0.8;
+}
+
+/* ===== Columnas ===== */
+.footer-columna h3 {
+  font-size: 1.1rem;
+  margin-bottom: 12px;
+  color: #ffffff;
+}
+
+.footer-columna ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-columna ul li {
+  margin-bottom: 8px;
+}
+
+.footer-columna a {
+  color: #ffffff;
+  text-decoration: none;
+  opacity: 0.9;
+  transition: opacity 0.2s ease;
+}
+
+.footer-columna a:hover {
+  opacity: 1;
+  text-decoration: underline;
+}
+
+/* ===== Items con icono ===== */
+.footer-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 10px;
+  font-size: 0.9rem;
+}
+
+.footer-item img {
+  width: 16px;
+  height: 16px;
+  filter: brightness(0) invert(1);
+}
+
+/* ===== Redes ===== */
+.footer-redes {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.footer-redes a {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 0.95rem;
+  opacity: 0.9;
+}
+
+.footer-redes a:hover {
+  opacity: 1;
+}
+
+.footer-redes img {
+  width: 18px;
+  height: 18px;
+  filter: brightness(0) invert(1);
+}
+
+/* ===== Línea inferior ===== */
+.footer-legal {
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  text-align: center;
+  padding: 16px 10px;
+  font-size: 0.85rem;
+  opacity: 0.8;
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 768px) {
+  .footer-identidad {
+    justify-content: center;
+    text-align: center;
+  }
+
+  .footer-textos {
+    align-items: center;
+  }
+
+  .footer-columna {
+    text-align: center;
+  }
+
+  .footer-item,
+  .footer-redes a {
+    justify-content: center;
+  }
+}
+.bloque-galeria {
+  margin-top: 3rem;
+}
+
+.subtitulo-seccion {
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: var(--color-principal);
+  margin-bottom: 0.5rem;
+}
+
+.descripcion-galeria {
+  max-width: 700px;
+  color: #555;
+  margin-bottom: 1.5rem;
+  line-height: 1.6;
+}
+
+.galeria-actividades {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.2rem;
+}
+
+.galeria-actividades img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  border-radius: 14px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.galeria-actividades img:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+}
+
+.galeria-proyeccion {
+  margin-top: 2rem;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+}
+
+.galeria-proyeccion img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  border-radius: 14px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+}
+
+.galeria-proyeccion img:hover {
+  transform: scale(1.03);
+  box-shadow: 0 10px 24px rgba(0,0,0,0.15);
+}

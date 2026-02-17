@@ -1,0 +1,297 @@
+/* ================================
+   COMPONENTS.CSS
+   Componentes reutilizables
+   ================================ */
+
+/* ================================
+   BOTONES
+   ================================ */
+
+.boton-enlace {
+  display: inline-block;
+  padding: 0.5rem 1.2rem;
+  border-radius: 999px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--color-principal);
+  border: 1px solid var(--color-principal);
+  transition: all 0.2s ease;
+}
+
+.boton-enlace:hover {
+  background-color: var(--color-principal);
+  color: var(--blanco);
+  text-decoration: none;
+}
+
+.boton-principal {
+  display: inline-block;
+  padding: 0.75rem 2rem;
+  background-color: var(--color-principal);
+  color: var(--blanco);
+  border-radius: 999px;
+  font-weight: 600;
+  transition: background-color 0.2s ease;
+}
+
+.boton-principal:hover {
+  background-color: var(--color-principal-oscuro);
+  text-decoration: none;
+}
+
+/* ================================
+   TARJETAS GENERALES
+   ================================ */
+
+/* PEGA ESTA VERSIÓN RESPONSIVA */
+.contenedor-tarjetas {
+  display: grid;
+  /* El secreto del diseño responsivo sin media queries: */
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  margin: 2rem 0;
+  width: 100%;
+}
+
+/* Ajuste opcional para las imágenes dentro de las tarjetas */
+.tarjeta img {
+  width: 100%;
+  height: 200px; /* Altura fija para que todas las tarjetas se vean iguales */
+  object-fit: cover; /* Evita que la imagen se estire feo */
+  border-radius: 12px 12px 0 0;
+}
+
+.tarjeta {
+  background-color: var(--blanco);
+  border: 1px solid var(--gris-claro);
+  border-radius: 12px;
+  padding: 1.5rem;
+  text-align: center;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.tarjeta:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.08);
+}
+
+.tarjeta .icono {
+  font-size: 2.2rem;
+  margin-bottom: 1rem;
+}
+
+.tarjeta h3 {
+  margin-bottom: 0.75rem;
+}
+
+.tarjeta p {
+  font-size: 0.95rem;
+}
+
+/* ================================
+   TARJETAS DESTACADAS (INDEX)
+   ================================ */
+
+.tarjeta-destacada {
+  background-color: var(--color-fondo-claro);
+  border-radius: 16px;
+  padding: 2rem;
+  text-align: center;
+}
+
+.tarjeta-destacada .icono {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.tarjeta-destacada h3 {
+  margin-bottom: 0.75rem;
+}
+
+.tarjeta-destacada p {
+  margin-bottom: 1.2rem;
+  font-size: 0.95rem;
+}
+
+/* ================================
+   FORMULARIOS
+   ================================ */
+
+.formulario {
+  max-width: 600px;
+}
+
+.campo-formulario {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1.2rem;
+}
+
+.campo-formulario label {
+  font-weight: 500;
+  margin-bottom: 0.4rem;
+}
+
+.campo-formulario input,
+.campo-formulario textarea {
+  padding: 0.6rem;
+  border: 1px solid var(--gris-claro);
+  border-radius: 6px;
+}
+
+.campo-formulario input:focus,
+.campo-formulario textarea:focus {
+  outline: none;
+  border-color: var(--color-principal);
+}
+
+/* ================================
+   LISTAS SIMPLES
+   ================================ */
+
+.lista-convenios,
+.lista-preguntas {
+  padding-left: 1rem;
+}
+
+.lista-convenios li,
+.lista-preguntas li {
+  margin-bottom: 0.75rem;
+  position: relative;
+}
+
+
+
+/* ================================
+   BLOQUES DE CONTACTO
+   ================================ */
+
+.bloques-contacto {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 2rem;
+}
+
+.bloque {
+  background-color: var(--color-fondo-claro);
+  padding: 1.5rem;
+  border-radius: 12px;
+}
+
+.bloque h3 {
+  margin-bottom: 0.75rem;
+}
+
+/* ================================
+   INTERACCIONES DE TARJETAS
+   ================================ */
+
+.tarjeta,
+.tarjeta-destacada {
+  transition:
+    transform 0.35s ease,
+    box-shadow 0.35s ease,
+    border-color 0.35s ease;
+  will-change: transform;
+}
+
+.tarjeta:hover,
+.tarjeta-destacada:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.12);
+  border-color: rgba(122, 31, 61, 0.35);
+}
+
+
+
+/* Títulos */
+.tarjeta h3,
+.tarjeta-destacada h3 {
+  transition: color 0.3s ease;
+}
+
+.tarjeta:hover h3,
+.tarjeta-destacada:hover h3 {
+  color: var(--color-principal-oscuro);
+}
+
+/* Cards clickeables */
+.tarjeta-destacada {
+  cursor: pointer;
+}
+
+/* ================================
+   ANIMACIÓN AL APARECER
+   ================================ */
+
+.reveal {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ================================
+   FAQ – CONTENEDOR ÚNICO
+   ================================ */
+
+.faq-contenedor {
+  border: 1px solid var(--gris-claro);
+  border-radius: 14px;
+  overflow: hidden;
+  background-color: var(--blanco);
+}
+
+/* ================================
+   FAQ – ITEMS
+   ================================ */
+
+.faq-item {
+  padding: 1rem 1.25rem;
+  cursor: pointer;
+  transition: background-color 0.25s ease;
+}
+
+.faq-item:not(:last-child) {
+  border-bottom: 1px solid var(--gris-claro);
+}
+
+.faq-item:hover {
+  background-color: var(--color-fondo-claro);
+}
+
+.faq-item.activo .icono-flecha {
+  transform: rotate(180deg);
+}
+.icono-flecha {
+  transition: transform 0.3s ease;
+  font-size: 0.8rem;
+}
+
+.faq-pregunta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+.faq-respuesta {
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transition: max-height 0.45s ease, opacity 0.35s ease;
+  font-size: 0.92rem;
+  line-height: 1.5;
+  color: var(--texto-secundario);
+  margin-top: 0.4rem;
+}
+
+.faq-item.activo .faq-respuesta {
+  max-height: 160px;
+  opacity: 1;
+}

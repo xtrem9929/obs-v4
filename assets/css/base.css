@@ -1,0 +1,124 @@
+/* ================================
+   BASE.CSS
+   Estilos globales del sitio
+   ================================ */
+
+/* RESET BÁSICO */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* VARIABLES GLOBALES */
+:root {
+  /* Colores institucionales */
+  --color-principal: #7a1f3d;
+  --color-principal-oscuro: #5c162d;
+  --color-fondo-claro: #f8f5f6;
+
+  /* Colores de texto */
+  --texto-principal: #1f1f1f;
+  --texto-secundario: #555555;
+
+  /* Neutros */
+  --blanco: #ffffff;
+  --gris-claro: #dddddd;
+}
+
+/* ESTILOS GENERALES */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--texto-principal);
+  background-color: var(--blanco);
+}
+
+/* TÍTULOS */
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 600;
+  line-height: 1.3;
+  color: var(--color-principal);
+}
+
+h1 {
+  font-size: 2.2rem;
+}
+
+h2 {
+  font-size: 1.8rem;
+}
+
+h3 {
+  font-size: 1.4rem;
+}
+
+/* TEXTO */
+p {
+  margin-bottom: 1rem;
+  color: var(--texto-secundario);
+}
+
+/* ENLACES */
+a {
+  color: var(--color-principal);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* LISTAS */
+ul {
+  list-style: none;
+}
+
+/* IMÁGENES */
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* BOTONES (base) */
+button {
+  font-family: inherit;
+  cursor: pointer;
+  border: none;
+  background: none;
+}
+
+/* FORMULARIOS (base) */
+input,
+textarea,
+select {
+  font-family: inherit;
+  font-size: 1rem;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+}
+
+/* --- ESPACIO PARA CHATBOT --- */
+.contenedor-chatbot {
+  position: fixed;
+  bottom: 25px;
+  right: 25px;
+  z-index: 2000;
+}
+
+/* Evitar que el chatbot tape contenido en móviles muy pequeños */
+@media (max-width: 480px) {
+  .contenedor-chatbot {
+    bottom: 15px;
+    right: 15px;
+  }
+}
