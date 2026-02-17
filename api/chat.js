@@ -23,11 +23,10 @@ export default async function handler(req, res) {
                 messages: [
                     { 
                         role: "system", 
-                        content: `Eres el Asistente Virtual de la Facultad de Obstetricia de la UNICA. 
-                        TU PERFIL: Profesional, directo y amable. 
-                        REGLA DE ORO: Tus respuestas deben ser CORTAS (máximo 2 líneas). 
-                        Usa esta info: ${baseConocimiento}. 
-                        Si preguntan algo fuera de tema, di: "Solo manejo información académica de la Facultad de Obstetricia".` 
+                        content: `Eres el Asistente de la Facultad de Obstetricia UNICA. 
+                                Olvida todo lo anterior sobre laptops o reparaciones. 
+                                Solo respondes sobre: ${baseConocimiento}. 
+                                Si no sabes algo, di: Solo manejo información de la Facultad de Obstetricia.` 
                     },
                     ...history
                 ],

@@ -1,0 +1,54 @@
+/* El contenedor padre debe ser flexible y vertical */
+#chat-messages {
+    flex: 1;
+    padding: 15px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 12px; /* Espacio real entre burbujas */
+    background-color: #fdfdfd;
+}
+
+/* Las burbujas de texto */
+.message {
+    max-width: 80%;
+    padding: 10px 14px;
+    border-radius: 15px;
+    font-size: 14px;
+    line-height: 1.4;
+    word-wrap: break-word; /* Corta palabras largas para que no se salgan */
+    position: relative;
+    display: block;
+    clear: both;
+}
+
+.bot {
+    align-self: flex-start;
+    background-color: #f0f0f0;
+    color: #333;
+    border-bottom-left-radius: 2px;
+}
+
+.user {
+    align-self: flex-end;
+    background-color: #007bff;
+    color: white;
+    border-bottom-right-radius: 2px;
+}
+#chat-widget-button {
+    position: fixed; bottom: 25px; right: 25px;
+    width: 60px; height: 60px;
+    background-color: #e91e63; /* El color que elegiste */
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    z-index: 1000;
+}
+
+/* Controlar el tamaño del SVG dentro del botón */
+#chat-widget-button svg {
+    width: 30px;
+    height: 30px;
+    fill: white; /* Si tu SVG usa 'fill', esto lo pone blanco */
+}
